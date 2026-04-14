@@ -5,6 +5,10 @@ interface PageSEOProps {
   title: string;
   description?: string;
   path?: string;
+  /**
+   * Override the page's OG image. If omitted, Next.js inherits the
+   * site-wide `app/opengraph-image.jpg` (the Daily Food monogram).
+   */
   ogImage?: string;
 }
 
@@ -12,7 +16,7 @@ export function generatePageMetadata({
   title,
   description = SITE_DESCRIPTION,
   path = "",
-  ogImage = "/og-image.jpg",
+  ogImage,
 }: PageSEOProps): Metadata {
   const fullTitle = path === "" ? `${SITE_NAME} | ${COMPANY.tagline}` : `${title} | ${SITE_NAME}`;
   const url = `${SITE_URL}${path}`;
@@ -30,13 +34,16 @@ export function generatePageMetadata({
       url,
       siteName: SITE_NAME,
       type: "website",
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      // Per-page override only — otherwise Next.js uses app/opengraph-image.jpg
+      ...(ogImage && {
+        images: [{ url: ogImage, alt: title }],
+      }),
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [ogImage],
+      ...(ogImage && { images: [ogImage] }),
     },
   };
 }
