@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70">
+  <!-- Leaf icon -->
+  <g transform="translate(12, 10)">
+    <path d="M16 2 C6 8 2 20 8 28 C10 18 16 10 24 6 C20 12 18 20 18 28 C24 22 28 12 24 2 Z" fill="#2E7D32"/>
+    <path d="M8 28 C8 28 12 24 16 28" stroke="#81C784" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- Brand name -->
+  <text x="46" y="28" font-family="'Nunito Sans', Arial, sans-serif" font-weight="900" font-size="20" fill="#2E7D32">Fresh<tspan fill="#81C784">Bite</tspan></text>
+  <!-- Tagline -->
+  <text x="46" y="50" font-family="'Nunito Sans', Arial, sans-serif" font-weight="600" font-size="9" fill="#2E7D32" letter-spacing="1">SNACK SMART, LIVE BOLD</text>
+</svg>
