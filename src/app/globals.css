@@ -137,26 +137,12 @@ body {
   scrollbar-width: none;
 }
 
-/* Heading weight (Avenir Black equivalent) */
+/* Heading weight (Avenir Black equivalent) — used for every heading on the site,
+   including the oversized hero, so the whole page shares one weight/tracking system. */
 .font-heading {
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.05;
-}
-
-/* Display — for oversized hero headlines (tighter tracking + line-height) */
-.font-display {
-  font-weight: 900;
-  letter-spacing: -0.035em;
-  line-height: 0.95;
-}
-
-/* Eyebrow label — small, all-caps, letter-spaced lead-ins */
-.eyebrow {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
 }
 
 /* Gradient overlays */

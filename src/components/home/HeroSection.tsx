@@ -58,17 +58,17 @@ export function HeroSection() {
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           className="max-w-4xl"
         >
-          {/* Eyebrow label — Mondelēz-style lead-in */}
+          {/* Eyebrow label — matches the eyebrow pattern used across the home page */}
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="eyebrow mb-6 block text-accent"
+            className="mb-6 inline-block text-sm font-semibold uppercase tracking-widest text-accent"
           >
             Daily Food International
           </motion.span>
 
-          <h1 className="font-display text-6xl text-white md:text-7xl lg:text-[88px] xl:text-[104px]">
+          <h1 className="font-heading text-6xl text-white md:text-7xl lg:text-[88px] xl:text-[104px]">
             Nourishing Africa,
             <br />
             One Bite at a Time
