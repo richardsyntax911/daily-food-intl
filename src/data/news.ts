@@ -1,3 +1,12 @@
+/*
+ * News & Milestones
+ *
+ * The live news feed (2023 onwards) is TODO — to be supplied by the client's
+ * communications team. Until then, this file holds deck-backed archival
+ * milestones from the Nov 2022 management deck. Each entry summarises a real
+ * company milestone, without fabricating executive quotes or revenue figures.
+ */
+
 export interface NewsArticle {
   id: string;
   slug: string;
@@ -14,104 +23,70 @@ export interface NewsArticle {
 export const newsArticles: NewsArticle[] = [
   {
     id: "1",
-    slug: "q3-2025-earnings-results",
-    title: "Daily Food Limited International Reports Strong Q3 2025 Results",
+    slug: "breakeven-october-2022",
+    title: "Daily Food Reaches Breakeven, Debt-Free and Founder-Financed",
     excerpt:
-      "Revenue grew 23% year-over-year to GHS 145 million, driven by robust performance across all five brands and continued expansion into new markets.",
-    content: `Daily Food Limited International today announced financial results for the third quarter ended September 30, 2025. The company reported revenue of GHS 145 million, representing a 23% increase compared to the same period last year. Net income rose to GHS 28 million, up from GHS 19 million in Q3 2024, reflecting improved operational efficiency and higher margins across the product portfolio.
+      "After a year of wheat, sugar and Cedi shocks, Daily Food hits operational breakeven in October 2022 — entirely on founder equity, with zero debt.",
+    content: `Daily Food Limited International reached operational breakeven in October 2022, a milestone achieved entirely on founder shareholder equity with no external debt on the balance sheet.
 
-The strong performance was driven by continued growth in the Boss Baker and FreshBite brands, which together accounted for over 60% of total revenue. International markets contributed 35% of quarterly revenue, up from 28% in the prior year, underscoring the success of the company's geographic diversification strategy.
+The milestone comes against a backdrop of severe cost pressure across 2022: global wheat and sugar prices spiked, and the Ghanaian Cedi saw a sharp devaluation against the dollar. Despite those headwinds, the company expanded into four new markets — Nigeria, Benin, Guinea-Bissau and Gabon — and signed on as a Burger King Africa supplier in the same year.
 
-"These results demonstrate the strength of our multi-brand strategy and the growing demand for quality African food products both domestically and internationally," said CEO Kwame Mensah. "We remain on track to achieve our full-year guidance and are excited about the pipeline of new products launching in Q4."`,
-    category: "Press Release",
-    imageUrl: "/images/news/q3-earnings.jpg",
-    publishedDate: "2025-10-15",
-    author: "Abena Osei-Bonsu",
+Founded in Ghana in 2017 with a thesis that West Africa's 70% import-dominated baked goods market was underserved by local producers, Daily Food today supplies 15 countries across West and Central Africa through its Boss Baker and Big Boss brands.`,
+    category: "Company News",
+    imageUrl: "/images/news/breakeven-2022.jpg",
+    publishedDate: "2022-10-31",
+    author: "Daily Food Communications",
     featured: true,
   },
   {
     id: "2",
-    slug: "boss-baker-east-africa-expansion",
-    title: "Boss Baker Expands to East Africa with Launch in Kenya and Tanzania",
+    slug: "burger-king-africa-supplier",
+    title: "Daily Food Signs On as Burger King Africa Supplier",
     excerpt:
-      "Daily Food's flagship snack brand enters the East African market, bringing its popular range of baked goods to consumers in Kenya and Tanzania.",
-    content: `Daily Food Limited International has officially launched its flagship Boss Baker brand in Kenya and Tanzania, marking a significant milestone in the company's East African expansion strategy. The rollout includes the full range of Boss Baker products, from the iconic meat pies and sausage rolls to the recently introduced pastry line.
+      "Boss Baker burger buns are now certified for Burger King restaurants across the African continent.",
+    content: `Daily Food Limited International has signed on as the continental supplier of burger buns to Burger King Africa, extending a relationship that began with Burger King certification in 2021.
 
-The launch is supported by a distribution partnership with leading East African retail chains and a dedicated marketing campaign tailored to local tastes and preferences. The company has invested GHS 12 million in establishing local supply chain infrastructure, including a distribution center in Nairobi that will serve both markets.
+The certification builds on Boss Baker's existing quick-service restaurant partnerships, including KFC, Rocomamas and others. All production runs through Daily Food's ISO 22000 and FSSC 22000 certified facility in Ghana.
 
-"East Africa represents one of the fastest-growing consumer markets on the continent, and we believe Boss Baker's combination of quality, convenience, and affordability will resonate strongly with consumers in this region," said Chief Marketing Officer Ama Serwaa. Initial retail placement covers over 2,000 outlets across both countries, with plans to expand to 5,000 by mid-2026.`,
-    category: "Company News",
-    imageUrl: "/images/news/boss-baker-east-africa.jpg",
-    publishedDate: "2025-09-22",
-    author: "Ama Serwaa",
+The deal reinforces Daily Food's position as a world-class local producer in a baked goods category long dominated by imports.`,
+    category: "Press Release",
+    imageUrl: "/images/news/burger-king-supplier.jpg",
+    publishedDate: "2022-08-15",
+    author: "Daily Food Communications",
     featured: true,
   },
   {
     id: "3",
-    slug: "freshbite-plantain-chips-launch",
-    title: "FreshBite Launches New Plantain Chips Range in Three Flavors",
+    slug: "4x-capacity-expansion-2021",
+    title: "Daily Food Quadruples Production Capacity, Hits 80% Utilisation",
     excerpt:
-      "The health-focused snack brand introduces a line of plantain chips made from locally sourced plantains, available in Original, Spicy Suya, and Garden Herb varieties.",
-    content: `FreshBite, Daily Food Limited International's health-conscious snack brand, has launched a new line of plantain chips crafted from premium, locally sourced plantains. The range debuts in three distinct flavors: Original Sea Salt, Spicy Suya inspired by the beloved West African street food, and Garden Herb featuring a blend of traditional African herbs and spices.
+      "A new production line installed in May 2021 delivers a 4X capacity increase; Q4 closes at 80% utilisation of the expanded line.",
+    content: `Daily Food Limited International has brought a new production line online, quadrupling total manufacturing capacity at its Ghana facility. By the fourth quarter of 2021, the new line was operating at 80% utilisation.
 
-Each variety is made using a proprietary low-oil cooking process that retains the natural sweetness and crunch of the plantain while keeping fat content 30% lower than conventional chips. The plantains are sourced exclusively from smallholder farmers in Ghana's Eastern Region through the company's Community Farming Program, ensuring both quality and fair compensation for growers.
+The capacity expansion was paired with product-range diversification to drive consumption, and with geographic expansion into Liberia and Sierra Leone. The company also received Burger King certification during the year, positioning Boss Baker as a certified burger-bun supplier for the quick-service restaurant market.
 
-"Plantain chips are already a beloved snack across Africa, but we saw an opportunity to elevate the category with better ingredients, cleaner processing, and more exciting flavors," said the FreshBite brand director. The new range is available in 50g and 150g packs at major retailers across Ghana, Nigeria, and Kenya, with an introductory price point designed to make healthy snacking accessible to all consumers.`,
-    category: "Product Launch",
-    imageUrl: "/images/news/freshbite-plantain-chips.jpg",
-    publishedDate: "2025-08-10",
-    author: "Ama Serwaa",
-    featured: true,
+The expansion follows the 2019 pivot to cakes and the $5 million production line investment that preceded it — a turnaround from the company's early beef-roll product that failed to land in-market.`,
+    category: "Company News",
+    imageUrl: "/images/news/capacity-expansion.jpg",
+    publishedDate: "2021-12-15",
+    author: "Daily Food Communications",
+    featured: false,
   },
   {
     id: "4",
-    slug: "sustainability-report-2025",
-    title: "Daily Food Publishes 2025 Sustainability Report, Highlights Progress on ESG Goals",
+    slug: "covid-export-markets-niger-burkina",
+    title: "Covid-Era Pivot: New Export Markets Open in Niger and Burkina Faso",
     excerpt:
-      "The annual report details significant progress toward zero-waste manufacturing, community farming support, and the transition to sustainable packaging.",
-    content: `Daily Food Limited International has released its annual Sustainability Report for 2025, detailing the company's environmental, social, and governance performance over the past year. The report highlights a 40% reduction in manufacturing waste since 2020, putting the company on track to achieve its zero-waste-to-landfill target by 2030.
+      "With schools closing across the region, Daily Food opens new export markets in Niger and Burkina Faso to absorb displaced volume.",
+    content: `With Covid-19 closing schools across the West African region and wiping out a key distribution channel, Daily Food Limited International has opened new export markets in Niger and Burkina Faso to absorb the displaced volume.
 
-Key achievements outlined in the report include the expansion of the Community Farming Program to support over 5,000 smallholder farmers, the transition of 65% of product packaging to recyclable or compostable materials, and the installation of solar panels at the Accra headquarters that now provide 50% of the facility's energy needs. The company also invested GHS 8 million in community education and nutrition programs across its operating markets.
+The move builds on the company's existing footprint in Ghana, Côte d'Ivoire, Mali and Togo, and follows the 2019 pivot from beef rolls to cakes that was underpinned by a $5 million production line investment.
 
-"Sustainability is not a separate initiative for us; it is embedded in how we do business," said VP of Sustainability Nana Adjei. "This report reflects our belief that doing well and doing good are not mutually exclusive. We are proud of the progress we have made, and we remain committed to transparent reporting as we work toward our ambitious 2030 goals."`,
-    category: "Sustainability",
-    imageUrl: "/images/news/sustainability-report.jpg",
-    publishedDate: "2025-07-05",
-    author: "Nana Adjei",
-    featured: false,
-  },
-  {
-    id: "5",
-    slug: "nairobi-office-opening",
-    title: "Daily Food Opens New Regional Office in Nairobi to Anchor East Africa Operations",
-    excerpt:
-      "The new Nairobi office will serve as the regional hub for Daily Food's growing operations across Kenya, Tanzania, Uganda, and Rwanda.",
-    content: `Daily Food Limited International has officially opened its new regional office in Nairobi's Westlands business district, establishing a dedicated hub for the company's expanding East African operations. The office, located on the 8th floor of Delta Tower, will house teams covering sales, marketing, supply chain management, and quality assurance for the Kenya, Tanzania, Uganda, and Rwanda markets.
-
-The opening ceremony was attended by company leadership, local government officials, and key distribution partners. The office represents an investment of GHS 5 million and will initially employ 45 staff, with plans to grow to 80 employees by the end of 2026 as the company deepens its presence in the region.
-
-"Nairobi is one of Africa's most dynamic business cities, and establishing a permanent presence here signals our long-term commitment to East African consumers," said CEO Kwame Mensah. "Having a local team on the ground allows us to better understand consumer preferences, respond quickly to market opportunities, and build stronger relationships with our retail and distribution partners."`,
+The company continues to develop burger bun capabilities and has begun KFC registration as part of a broader quick-service restaurant strategy.`,
     category: "Company News",
-    imageUrl: "/images/news/nairobi-office.jpg",
-    publishedDate: "2025-06-18",
-    author: "Kwame Mensah",
-    featured: false,
-  },
-  {
-    id: "6",
-    slug: "tropifruit-best-juice-award",
-    title: "TropiFruit Wins Best Natural Juice at African Food & Beverage Awards 2025",
-    excerpt:
-      "TropiFruit's Mango & Baobab blend was named Best Natural Juice at the prestigious African Food & Beverage Awards ceremony held in Johannesburg.",
-    content: `TropiFruit, the natural fruit juice brand from Daily Food Limited International, has been named winner of the Best Natural Juice category at the 2025 African Food & Beverage Awards held in Johannesburg, South Africa. The award was given to TropiFruit's Mango & Baobab blend, which impressed judges with its authentic tropical flavor profile and commitment to using 100% natural ingredients with no added sugars or preservatives.
-
-The African Food & Beverage Awards is one of the continent's most prestigious industry recognitions, attracting entries from over 200 food and beverage companies across 30 African countries. The judging panel praised TropiFruit for its innovative use of baobab fruit, a nutrient-dense superfood native to Africa, combined with sustainably sourced mangoes from the company's partner farms in Ghana's Northern Region.
-
-"This award is a tremendous validation of our approach to the beverages category, which is to create products that are both delicious and authentically African," said CEO Kwame Mensah. "TropiFruit was built on the belief that Africa's incredible natural ingredients deserve a world-class brand, and we are honored that the industry has recognized our efforts."`,
-    category: "Company News",
-    imageUrl: "/images/news/tropifruit-award.jpg",
-    publishedDate: "2025-05-02",
-    author: "Ama Serwaa",
+    imageUrl: "/images/news/covid-expansion.jpg",
+    publishedDate: "2020-09-01",
+    author: "Daily Food Communications",
     featured: false,
   },
 ];

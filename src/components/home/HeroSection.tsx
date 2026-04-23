@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[85vh] flex items-center bg-primary overflow-hidden">
+    <section className="relative min-h-[85vh] flex items-center bg-coral overflow-hidden">
       {/* Decorative background shapes */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <svg
@@ -47,8 +47,9 @@ export function HeroSection() {
         >
           <circle cx="100" cy="100" r="80" fill="white" />
         </svg>
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-dark" />
+        {/* Gradient overlay for depth — mirrors the Nov 2022 deck cover page's
+            coral-to-deep-salmon wash. */}
+        <div className="absolute inset-0 bg-gradient-to-br from-coral-light via-coral to-coral-dark" />
       </div>
 
       <Container className="relative z-10">
@@ -65,13 +66,13 @@ export function HeroSection() {
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             className="mb-6 inline-block text-sm font-semibold uppercase tracking-widest text-accent"
           >
-            Daily Food International
+            Be Smart, Eat Smart
           </motion.span>
 
-          <h1 className="font-heading text-6xl text-white md:text-7xl lg:text-[88px] xl:text-[104px]">
-            Nourishing Africa,
+          <h1 className="font-heading text-4xl text-white sm:text-5xl md:text-7xl lg:text-[88px] xl:text-[104px]">
+            Baking an African
             <br />
-            One Bite at a Time
+            Champion
           </h1>
 
           <motion.p
@@ -84,9 +85,9 @@ export function HeroSection() {
             }}
             className="mt-8 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl lg:text-2xl lg:leading-relaxed"
           >
-            From farm to table, we craft quality food products that celebrate
-            Africa&apos;s rich culinary heritage and nourish communities across
-            the continent and beyond.
+            From Ghana to 15 markets across West and Central Africa, Daily Food
+            produces the baked goods, snacks and breads that feed 400 million+
+            consumers — home to Boss Baker and Big Boss.
           </motion.p>
 
           <motion.div

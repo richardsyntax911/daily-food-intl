@@ -1,6 +1,6 @@
 "use client";
 
-import { Leaf, Users, Truck } from "lucide-react";
+import { Leaf, Users, HeartHandshake } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -11,24 +11,26 @@ interface PillarItem {
   description: string;
 }
 
+/* Deck-aligned preview — shows 3 of the 4 outward-facing ESG pillars.
+   The full Planet/People/Prosperity/Governance framework lives on /sustainability. */
 const pillars: PillarItem[] = [
   {
     icon: Leaf,
-    title: "Environment",
+    title: "Planet",
     description:
-      "Reducing our carbon footprint through renewable energy, water conservation, and zero-waste manufacturing initiatives.",
+      "Pursuing Net Zero through smarter packaging that saves 20 million plastic bags a year and carton-optimised logistics.",
   },
   {
     icon: Users,
-    title: "Community",
+    title: "People",
     description:
-      "Empowering local communities with education, health programs, and economic opportunities for sustainable growth.",
+      "Our employment has grown from 30 in 2018 to 200+ today, with 60+ upskilled through high-skill training.",
   },
   {
-    icon: Truck,
-    title: "Supply Chain",
+    icon: HeartHandshake,
+    title: "Prosperity",
     description:
-      "Building ethical, transparent supply chains that support fair trade practices and responsible sourcing.",
+      "We chair the Advisory Board of Food For All Africa, an NGO feeding 10,000+ people per month.",
   },
 ];
 
@@ -37,9 +39,10 @@ export function SustainabilityPreview() {
     <section className="py-20">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Image placeholder */}
+          {/* Left: Image placeholder — yellow-to-orange gradient mirrors the
+              deck's "With sustainability baked in" slide (p.17). */}
           <ScrollReveal direction="left">
-            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-green-700 via-green-600 to-emerald-500 overflow-hidden relative">
+            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-accent via-accent-dark to-secondary overflow-hidden relative">
               {/* Nature-inspired decorative elements */}
               <div className="absolute inset-0 opacity-15" aria-hidden="true">
                 <svg
@@ -92,7 +95,7 @@ export function SustainabilityPreview() {
           {/* Right: Content */}
           <ScrollReveal direction="right">
             <div>
-              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-primary">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-coral">
                 Sustainability
               </span>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground">

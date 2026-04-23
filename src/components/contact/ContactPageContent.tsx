@@ -72,7 +72,7 @@ export function ContactPageContent() {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="bg-primary py-24 md:py-32">
+      <section className="bg-coral py-24 md:py-32">
         <Container>
           <ScrollReveal>
             <div className="text-center">
@@ -230,8 +230,8 @@ export function ContactPageContent() {
             <ScrollReveal direction="right">
               <div>
                 <SectionHeading
-                  eyebrow="Our Offices"
-                  title="Global Presence"
+                  eyebrow="Where to Find Us"
+                  title="Our Headquarters"
                   alignment="left"
                 />
 

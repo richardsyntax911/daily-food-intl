@@ -11,10 +11,11 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 3500, suffix: "+", label: "Employees" },
-  { value: 12, suffix: "", label: "Countries" },
-  { value: 5, suffix: "", label: "Brands" },
-  { value: 250000, suffix: "", label: "sq ft Production" },
+  // Numbers sourced from the Nov 2022 management presentation.
+  { value: 200, suffix: "+", label: "Employees" },
+  { value: 15, suffix: "", label: "Countries" },
+  { value: 9, suffix: "", label: "Blue-Chip Partners" },
+  { value: 400, suffix: "M+", label: "Consumer Reach" },
 ];
 
 function formatNumber(n: number): string {
@@ -62,7 +63,7 @@ export function StatsCounter() {
   return (
     <section className="bg-primary py-16" ref={ref}>
       <Container>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4 lg:gap-12">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -76,10 +77,10 @@ export function StatsCounter() {
               }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-heading text-white">
+              <div className="text-3xl font-heading text-white sm:text-4xl md:text-5xl">
                 <AnimatedCounter stat={stat} isInView={isInView} />
               </div>
-              <div className="mt-2 text-sm md:text-base text-white/70 uppercase tracking-wider">
+              <div className="mt-2 text-xs uppercase tracking-wider text-white/70 sm:text-sm md:text-base">
                 {stat.label}
               </div>
             </motion.div>

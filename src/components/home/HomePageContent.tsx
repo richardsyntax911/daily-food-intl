@@ -1,6 +1,7 @@
 "use client";
 
 import { HeroSection } from "./HeroSection";
+import { PartnersStrip } from "./PartnersStrip";
 import { BrandCarousel } from "./BrandCarousel";
 import { AboutPreview } from "./AboutPreview";
 import { ContentZigzag } from "./ContentZigzag";
@@ -12,6 +13,7 @@ export function HomePageContent() {
   return (
     <main>
       <HeroSection />
+      <PartnersStrip />
       <BrandCarousel />
       <AboutPreview />
       <ContentZigzag />

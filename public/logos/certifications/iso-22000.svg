@@ -1,0 +1,19 @@
+<!-- PLACEHOLDER — neutral typographic "ISO 22000" wordmark.
+     The REAL ISO 22000 certification mark comes from whichever body
+     audited Daily Food (SGS, Bureau Veritas, TÜV, DQS, Lloyd's Register,
+     Intertek, etc.) — each certifier issues its own branded mark.
+     Ask QA/compliance for the certifier's logo pack (usually zip/PDF).
+     Replace this file — keep filename and path unchanged. -->
+<svg width="131" height="25" viewBox="0 0 131 25" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ISO 22000 Certified">
+  <!-- "ISO" block — solid green -->
+  <text x="0" y="19" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="20" fill="#218455" letter-spacing="1">ISO</text>
+
+  <!-- Divider bar -->
+  <rect x="40" y="6" width="2" height="14" fill="#218455" />
+
+  <!-- "22000" -->
+  <text x="47" y="19" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="20" fill="#218455" letter-spacing="1">22000</text>
+
+  <!-- "CERTIFIED" sub-label in neutral grey -->
+  <text x="0" y="24.5" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="4.8" fill="#87888A" letter-spacing="2.5">FOOD SAFETY · CERTIFIED</text>
+</svg>

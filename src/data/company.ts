@@ -1,204 +1,200 @@
+/*
+ * Company data
+ * Source: Daily Food Management Presentation, 22 November 2022 (Sahel Capital).
+ * Facts stated as of that date unless marked otherwise.
+ * Items marked TODO still need client confirmation — deck was silent.
+ */
+
 export const timeline = [
   {
-    year: 2008,
-    title: "Founded",
-    description:
-      "Daily Food Limited established in Accra, Ghana with a single production line.",
-  },
-  {
-    year: 2010,
-    title: "Boss Baker Launch",
-    description:
-      "Flagship brand Boss Baker introduced, revolutionizing on-the-go snacking in West Africa.",
-  },
-  {
-    year: 2012,
-    title: "First Export",
-    description:
-      "Products exported to Nigeria, marking the beginning of international expansion.",
-  },
-  {
-    year: 2014,
-    title: "Golden Harvest Launch",
-    description:
-      "Entered the cereals and grains market with Golden Harvest brand.",
-  },
-  {
-    year: 2016,
-    title: "Mama's Kitchen Launch",
-    description:
-      "Ready meals brand launched to address growing demand for convenience foods.",
-  },
-  {
     year: 2017,
-    title: "GSE Listing",
+    title: "Company founded",
     description:
-      "Company listed on the Ghana Stock Exchange as DFL.",
+      "Daily Food is established in Ghana. Shatta Wale campaign launches the first consumer push; early learnings on mother-led purchase decisions shape the brand voice.",
   },
   {
     year: 2018,
-    title: "FreshBite Launch",
+    title: "The pivot begins",
     description:
-      "Health-focused snack brand FreshBite launched for the wellness-conscious market.",
+      "Beef rolls fail to land in-market and the Fan Milk project is discontinued. The team explores pivot alternatives rather than force-fit the original plan.",
+  },
+  {
+    year: 2019,
+    title: "Pivot to cakes and $5M line investment",
+    description:
+      "Machines and market positioning pivot to cakes. A new production line is ordered in December (≈$5M investment). Geographic expansion into Côte d'Ivoire, Mali and Togo absorbs volume. Burger bun development and KFC registration begin.",
   },
   {
     year: 2020,
-    title: "TropiFruit Launch",
+    title: "Covid response",
     description:
-      "Entered the beverages category with natural fruit juices.",
+      "Schools close, wiping out a key channel. The team opens new export markets — Niger and Burkina Faso — to absorb the volumes left behind.",
+  },
+  {
+    year: 2021,
+    title: "4X capacity and Burger King certification",
+    description:
+      "New production line installed in May — a 4X capacity increase. Product range diversified to drive consumption; Liberia and Sierra Leone added. Q4 hits 80% utilisation of the new line. Burger King certification secured.",
   },
   {
     year: 2022,
-    title: "East Africa Expansion",
+    title: "Breakeven, 4 new markets, Burger King Africa",
     description:
-      "Opened regional office in Nairobi, expanding to 8 African markets.",
-  },
-  {
-    year: 2024,
-    title: "International HQ",
-    description:
-      "Renamed to Daily Food Limited International, opened London office.",
+      "Despite wheat/sugar price shocks and the Cedi collapse, Daily Food achieves breakeven in October. Enters Nigeria, Benin, Guinea-Bissau and Gabon. Signs on as Burger King Africa supplier.",
   },
 ];
 
+/*
+ * Leadership
+ * The Nov 2022 deck names Geoffrey Fadoul and Jean-Paul Nassar as the presenters.
+ * Titles here are best-inference; confirm with client.
+ */
 export const leadership = [
   {
-    name: "Kwame Mensah",
-    title: "Chief Executive Officer",
-    imageUrl: "/images/team/ceo.jpg",
-    bio: "Kwame has led Daily Food since 2015, driving expansion from 2 to 12 markets across Africa and beyond.",
+    name: "Geoffrey Fadoul",
+    title: "Co-Founder",
+    imageUrl: "/images/team/geoffrey-fadoul.jpg",
+    bio: "Co-founded Daily Food in Ghana in 2017 with a thesis that West Africa's baked goods market — 70% import-dominated — was wide open for a world-class local producer. Led the pivot to cakes in 2019 and the geographic expansion that followed.",
   },
   {
-    name: "Abena Osei-Bonsu",
-    title: "Chief Financial Officer",
-    imageUrl: "/images/team/cfo.jpg",
-    bio: "Abena oversees financial strategy and led the company's successful listing on the Ghana Stock Exchange.",
+    name: "Jean-Paul Nassar",
+    title: "Co-Founder",
+    imageUrl: "/images/team/jean-paul-nassar.jpg",
+    bio: "Co-founded Daily Food in 2017. Architect of the operations and capital discipline that took the company from startup to breakeven in October 2022 — financed entirely by founder equity, with zero debt.",
   },
-  {
-    name: "Kofi Darko",
-    title: "Chief Operations Officer",
-    imageUrl: "/images/team/coo.jpg",
-    bio: "Kofi manages manufacturing operations across 3 state-of-the-art production facilities.",
-  },
-  {
-    name: "Ama Serwaa",
-    title: "Chief Marketing Officer",
-    imageUrl: "/images/team/cmo.jpg",
-    bio: "Ama drives brand strategy and consumer engagement across all five Daily Food brands.",
-  },
-  {
-    name: "Nana Adjei",
-    title: "VP, Sustainability",
-    imageUrl: "/images/team/vp-sustainability.jpg",
-    bio: "Nana leads ESG initiatives including sustainable sourcing and community investment programs.",
-  },
-  {
-    name: "Efua Mensah",
-    title: "VP, Human Resources",
-    imageUrl: "/images/team/vp-hr.jpg",
-    bio: "Efua champions talent development and builds an inclusive culture across all locations.",
-  },
+  // TODO: expanded leadership team (Sales, Operations, Marketing, HR, Finance)
+  // to be added once we have names, titles and bios from the client.
 ];
 
 export const missionVisionValues = {
   mission:
-    "To nourish communities across Africa and beyond with accessible, high-quality food products that celebrate local flavors and ingredients.",
+    "Offering the smartest snack, for the smartest moment, made in the smartest way — taste and nutrition, affordability and quality in one snack.",
   vision:
-    "To be Africa's most trusted and innovative food company, setting the global standard for quality, sustainability, and community impact.",
+    "To be a supplier of highest quality and affordable foods that bring joy to our consumers in Africa.",
   values: [
     {
-      title: "Quality First",
-      description: "Uncompromising standards in every product we make.",
-      icon: "shield-check",
+      title: "We love our consumers and our brands",
+      description:
+        "Deep understanding of our customers and their desires — every product starts with what the African consumer actually wants.",
+      icon: "heart-handshake",
     },
     {
-      title: "Community Impact",
+      title: "We grow every day",
       description:
-        "Creating shared value for the communities where we operate.",
+        "Growth drives all our thinking. Our people power it — 30 in 2018, 200 today, 350 by 2023.",
       icon: "users",
     },
     {
-      title: "Innovation",
-      description: "Continuously improving our products and processes.",
+      title: "We do what's smart",
+      description:
+        "Treat everyone with care and integrity, deliver on commitments, and do what's right for our brands and the environment.",
       icon: "lightbulb",
-    },
-    {
-      title: "Sustainability",
-      description:
-        "Responsible stewardship of resources for future generations.",
-      icon: "leaf",
-    },
-    {
-      title: "Integrity",
-      description:
-        "Transparent, ethical business practices in everything we do.",
-      icon: "heart-handshake",
     },
   ],
 };
 
+/*
+ * Offices
+ * Deck is Ghana-based only. Lagos/Nairobi/London references were fabricated
+ * placeholder content and have been removed.
+ */
 export const offices = [
   {
     city: "Accra",
     country: "Ghana",
-    type: "Global Headquarters" as const,
-    address: "15 Industrial Avenue, North Industrial Area",
+    type: "Headquarters & Production" as const,
+    // TODO: confirm exact address with client.
+    address: "Accra, Ghana",
     phone: "+233 30 222 7890",
-  },
-  {
-    city: "Lagos",
-    country: "Nigeria",
-    type: "Regional Office" as const,
-    address: "42 Broad Street, Lagos Island",
-    phone: "+234 1 234 5678",
-  },
-  {
-    city: "Nairobi",
-    country: "Kenya",
-    type: "Regional Office" as const,
-    address: "8th Floor, Delta Tower, Westlands",
-    phone: "+254 20 765 4321",
-  },
-  {
-    city: "London",
-    country: "United Kingdom",
-    type: "International Office" as const,
-    address: "120 Cheapside, London EC2V 6DT",
-    phone: "+44 20 7946 0958",
   },
 ];
 
+/*
+ * Markets
+ * 15 current + 3 future per the Nov 2022 deck ("Daily Food today" slide).
+ */
+export const markets = {
+  /* 15 current markets per the Nov 2022 deck ("Daily Food today" slide).
+     Grouped here by linguistic region to make the footprint auditable. */
+  current: [
+    /* Anglophone (5) */
+    "Ghana",
+    "Nigeria",
+    "Liberia",
+    "Sierra Leone",
+    "Gambia",
+    /* Francophone (10) */
+    "Côte d'Ivoire",
+    "Senegal",
+    "Mali",
+    "Burkina Faso",
+    "Niger",
+    "Togo",
+    "Benin",
+    "Cameroon",
+    "Gabon",
+    "Congo-Brazzaville",
+  ],
+  future: ["DRC", "Tanzania"],
+};
+
+/*
+ * Partners and certifications (Nov 2022 deck, "Daily Food today" slide).
+ */
+/*
+ * `scale` is an optional per-logo upscale applied after object-contain fits
+ * the image to its box. Use values > 1 to bump compact wordmarks (e.g. RONDO)
+ * to match the visual weight of wider marks in the marquee.
+ */
+export const partners: { name: string; logo: string; scale?: number }[] = [
+  { name: "Burger King", logo: "/logos/partners/burger-king.png" },
+  { name: "KFC", logo: "/logos/partners/kfc.png" },
+  { name: "RONDO", logo: "/logos/partners/rondo.png", scale: 1.4 },
+  { name: "DIOSNA", logo: "/logos/partners/diosna.png" },
+  { name: "MANE", logo: "/logos/partners/mane.png" },
+  { name: "Barry Callebaut", logo: "/logos/partners/barry-callebaut.png" },
+  { name: "TT Italy", logo: "/logos/partners/tt-italy.png" },
+  { name: "Puratos", logo: "/logos/partners/puratos.png" },
+  { name: "Rocomamas", logo: "/logos/partners/rocomamas.svg" },
+];
+
+export const certifications = ["ISO 22000", "FSSC 22000"];
+
+/*
+ * Sustainability framework — Nov 2022 deck "With sustainability baked in" slide.
+ * Four ESG pillars: Planet, People, Prosperity, Governance.
+ */
 export const sustainabilityInitiatives = [
   {
-    title: "Zero Waste by 2030",
+    title: "Planet — pursuing Net Zero",
     description:
-      "We are committed to achieving zero waste to landfill across all our manufacturing facilities by 2030. Through innovative recycling programs and process optimization, we have already reduced waste by 40% since 2020.",
-    icon: "recycle",
-    stat: "40%",
-    statLabel: "waste reduction since 2020",
+      "We are pursuing a net zero and net positive contribution to the planet. Our string packaging design saves 20 million plastic bags per year, and we've optimised logistics by carton size to cut unit emissions.",
+    icon: "leaf",
+    stat: "20M",
+    statLabel: "plastic bags saved per year",
   },
   {
-    title: "Community Farming Program",
+    title: "People — our key asset",
     description:
-      "Our community farming program supports over 5,000 smallholder farmers across Ghana, Nigeria, and Kenya with training, equipment, and fair-trade purchasing agreements.",
-    icon: "sprout",
-    stat: "5,000+",
-    statLabel: "farmers supported",
+      "Our employment grew from 30 to 200 people, with 350 targeted by 2023. We have delivered high-skill training to 60+ people since founding.",
+    icon: "users",
+    stat: "30→200",
+    statLabel: "employees grown since 2018",
   },
   {
-    title: "Sustainable Packaging",
+    title: "Prosperity — Food For All Africa",
     description:
-      "We are transitioning to 100% recyclable or compostable packaging across all brands. Currently, 65% of our packaging meets this standard, with full transition planned by 2028.",
-    icon: "package",
-    stat: "65%",
-    statLabel: "sustainable packaging",
+      "We chair the Advisory Board of Food For All Africa, an NGO that feeds 10,000+ people per month. We also localise inputs to source more from the communities that host us.",
+    icon: "heart",
+    stat: "10k+",
+    statLabel: "people fed per month via our NGO partnership",
   },
   {
-    title: "Clean Energy Transition",
+    title: "Governance — sustainability from the top down",
     description:
-      "Our Accra headquarters and primary production facility now runs on 50% solar energy, with plans to reach 80% renewable energy across all facilities by 2027.",
-    icon: "sun",
-    stat: "50%",
-    statLabel: "solar powered HQ",
+      "Our Board observes best practices, and sustainability is a recurring agenda item — not an afterthought. ISO 22000 and FSSC 22000 certified.",
+    icon: "shield-check",
+    stat: "ISO + FSSC",
+    statLabel: "22000 certified",
   },
 ];

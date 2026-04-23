@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   ShieldCheck,
   Users,
@@ -10,7 +11,43 @@ import {
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { timeline, leadership, missionVisionValues } from "@/data/company";
+import { CertificationBadges } from "@/components/ui/CertificationBadges";
+import {
+  timeline,
+  leadership,
+  missionVisionValues,
+  partners,
+} from "@/data/company";
+
+/* ------------------------------------------------------------------ */
+/*  Market footprint — Nov 2022 deck "Daily Food today" slide.         */
+/*  10 Francophone + 5 Anglophone = 15 current markets.                */
+/* ------------------------------------------------------------------ */
+const anglophoneMarkets = [
+  { country: "Ghana", flag: "🇬🇭", note: "Home base" },
+  { country: "Nigeria", flag: "🇳🇬" },
+  { country: "Liberia", flag: "🇱🇷" },
+  { country: "Sierra Leone", flag: "🇸🇱" },
+  { country: "Gambia", flag: "🇬🇲" },
+];
+
+const francophoneMarkets = [
+  { country: "Côte d'Ivoire", flag: "🇨🇮" },
+  { country: "Senegal", flag: "🇸🇳" },
+  { country: "Mali", flag: "🇲🇱" },
+  { country: "Burkina Faso", flag: "🇧🇫" },
+  { country: "Niger", flag: "🇳🇪" },
+  { country: "Togo", flag: "🇹🇬" },
+  { country: "Benin", flag: "🇧🇯" },
+  { country: "Cameroon", flag: "🇨🇲" },
+  { country: "Gabon", flag: "🇬🇦" },
+  { country: "Congo-Brazzaville", flag: "🇨🇬" },
+];
+
+const pipelineMarkets = [
+  { country: "DRC", flag: "🇨🇩" },
+  { country: "Tanzania", flag: "🇹🇿" },
+];
 
 /* ------------------------------------------------------------------ */
 /*  Icon mapping                                                       */
@@ -39,7 +76,7 @@ export function AboutPageContent() {
       {/* ============================================================ */}
       {/*  HERO BANNER                                                  */}
       {/* ============================================================ */}
-      <section className="bg-primary py-24 md:py-32">
+      <section className="bg-coral py-24 md:py-32">
         <Container>
           <ScrollReveal>
             <div className="text-center">
@@ -47,8 +84,9 @@ export function AboutPageContent() {
                 About Us
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-                Discover the story behind Africa&apos;s fastest-growing food
-                company and the people who make it possible.
+                Be Smart, Eat Smart. Since 2017, we&apos;ve been baking an
+                African champion — from Ghana to 15 markets across the
+                continent.
               </p>
             </div>
           </ScrollReveal>
@@ -65,26 +103,32 @@ export function AboutPageContent() {
               <div>
                 <SectionHeading
                   eyebrow="Our Story"
-                  title="Building Africa's Food Future"
+                  title="Baking an African Champion"
                   alignment="left"
                 />
                 <p className="text-foreground-muted leading-relaxed">
-                  Founded in 2008 in Accra, Ghana, Daily Food Limited began with
-                  a single production line and a bold ambition: to create
-                  high-quality, accessible food products that celebrate African
-                  flavors and ingredients. What started as a small bakery
-                  operation has grown into a multi-brand food manufacturing
-                  powerhouse serving consumers across 12 countries.
+                  Daily Food was founded in Ghana in 2017 with a clear
+                  observation: West Africa&apos;s baked goods market was 70%
+                  import-dominated — good quality at a high price, while local
+                  production was low price and low quality. That gap was the
+                  opportunity for a world-class local producer to serve 400
+                  million+ consumers across the region through ECOWAS.
                 </p>
                 <p className="mt-4 text-foreground-muted leading-relaxed">
-                  Today, Daily Food Limited International is home to five
-                  beloved brands — Boss Baker, Golden Harvest, FreshBite,
-                  Mama&apos;s Kitchen, and TropiFruit — each crafted to meet
-                  the diverse tastes and nutritional needs of modern African
-                  consumers. With over 3,500 employees, state-of-the-art
-                  manufacturing facilities, and a growing international
-                  presence, we continue to innovate and expand while staying
-                  true to our founding mission of nourishing communities.
+                  The business was forged in steel. An early pivot from beef
+                  rolls to cakes in 2019, a $5M production line, schools
+                  closing during Covid, a 4X capacity expansion in 2021, and
+                  the wheat, sugar and Cedi shocks of 2022 — and the company
+                  still reached breakeven in October 2022, financed entirely
+                  by founder equity with zero debt.
+                </p>
+                <p className="mt-4 text-foreground-muted leading-relaxed">
+                  Today Daily Food serves 15 markets across West and Central
+                  Africa through two brands — Boss Baker and Big Boss —
+                  supplies Burger King and KFC across the continent, and holds
+                  ISO 22000 and FSSC 22000 certifications. The team has grown
+                  from 30 people in 2018 to 200+ today, with 350 targeted by
+                  next year.
                 </p>
               </div>
             </ScrollReveal>
@@ -105,7 +149,7 @@ export function AboutPageContent() {
             <div className="mx-auto mb-16 grid max-w-5xl gap-8 md:grid-cols-2">
               {/* Mission */}
               <div className="rounded-2xl border border-border bg-white p-8">
-                <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-widest text-primary">
+                <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-widest text-coral">
                   Our Mission
                 </span>
                 <p className="font-heading text-xl leading-relaxed text-foreground md:text-2xl">
@@ -114,7 +158,7 @@ export function AboutPageContent() {
               </div>
               {/* Vision */}
               <div className="rounded-2xl border border-border bg-white p-8">
-                <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-widest text-primary">
+                <span className="mb-2 inline-block text-sm font-semibold uppercase tracking-widest text-coral">
                   Our Vision
                 </span>
                 <p className="font-heading text-xl leading-relaxed text-foreground md:text-2xl">
@@ -128,12 +172,12 @@ export function AboutPageContent() {
           <ScrollReveal>
             <SectionHeading
               eyebrow="Our Values"
-              title="What We Stand For"
-              subtitle="Five core principles guide every decision we make."
+              title="Always Led by Our Values"
+              subtitle="Three principles guide every decision we make."
             />
           </ScrollReveal>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid gap-6 md:grid-cols-3">
             {missionVisionValues.values.map((value, index) => {
               const Icon = iconMap[value.icon] ?? ShieldCheck;
               return (
@@ -285,6 +329,175 @@ export function AboutPageContent() {
               </ScrollReveal>
             ))}
           </div>
+        </Container>
+      </section>
+
+      {/* ============================================================ */}
+      {/*  OUR FOOTPRINT                                                */}
+      {/* ============================================================ */}
+      <section id="footprint" className="bg-surface py-20 md:py-28">
+        <Container>
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Where We Operate"
+              title="15 Markets Across West & Central Africa"
+              subtitle="Ten Francophone and five Anglophone markets — reached through a single Ghana-based ISO-certified production line. DRC and Tanzania are the next two markets in the pipeline."
+            />
+          </ScrollReveal>
+
+          <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-2">
+            {/* Anglophone column */}
+            <ScrollReveal direction="left">
+              <div className="rounded-2xl border border-border bg-white p-6 md:p-8">
+                <div className="mb-5 flex items-center justify-between border-b border-border pb-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-foreground-muted">
+                      Anglophone
+                    </p>
+                    <h3 className="mt-1 font-heading text-xl text-foreground">
+                      English-speaking markets
+                    </h3>
+                  </div>
+                  <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">
+                    {anglophoneMarkets.length}
+                  </span>
+                </div>
+                <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {anglophoneMarkets.map((m) => (
+                    <li
+                      key={m.country}
+                      className="flex items-center gap-2 rounded-lg bg-surface px-3 py-2"
+                    >
+                      <span className="text-lg leading-none">{m.flag}</span>
+                      <span className="text-sm font-semibold text-foreground">
+                        {m.country}
+                      </span>
+                      {m.note && (
+                        <span className="ml-auto rounded-full bg-secondary/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-800">
+                          {m.note}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs text-foreground-muted">
+                  Sold under the{" "}
+                  <span className="font-semibold text-foreground">Boss Baker</span>{" "}
+                  brand (Ghana, Liberia, Sierra Leone, Gambia) and the{" "}
+                  <span className="font-semibold text-foreground">Big Boss</span>{" "}
+                  brand (Nigeria).
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Francophone column */}
+            <ScrollReveal direction="right">
+              <div className="rounded-2xl border border-border bg-white p-6 md:p-8">
+                <div className="mb-5 flex items-center justify-between border-b border-border pb-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-foreground-muted">
+                      Francophone
+                    </p>
+                    <h3 className="mt-1 font-heading text-xl text-foreground">
+                      French-speaking markets
+                    </h3>
+                  </div>
+                  <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">
+                    {francophoneMarkets.length}
+                  </span>
+                </div>
+                <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {francophoneMarkets.map((m) => (
+                    <li
+                      key={m.country}
+                      className="flex items-center gap-2 rounded-lg bg-surface px-3 py-2"
+                    >
+                      <span className="text-lg leading-none">{m.flag}</span>
+                      <span className="text-sm font-semibold text-foreground">
+                        {m.country}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs text-foreground-muted">
+                  Sold under the{" "}
+                  <span className="font-semibold text-foreground">Boss Baker</span>{" "}
+                  brand with French pack and copy.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Pipeline strip */}
+          <ScrollReveal>
+            <div className="mx-auto mt-10 max-w-5xl rounded-2xl border border-dashed border-coral/40 bg-coral/5 p-5">
+              <div className="flex flex-wrap items-center justify-center gap-3 text-center">
+                <span className="text-xs font-bold uppercase tracking-widest text-coral">
+                  Next in the pipeline
+                </span>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {pipelineMarkets.map((m) => (
+                    <span
+                      key={m.country}
+                      className="inline-flex items-center gap-2 rounded-full border border-coral/30 bg-white px-3 py-1 text-sm font-semibold text-foreground"
+                    >
+                      <span className="text-base leading-none">{m.flag}</span>
+                      {m.country}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </section>
+
+      {/* ============================================================ */}
+      {/*  PARTNERS & CERTIFICATIONS                                    */}
+      {/* ============================================================ */}
+      <section id="partners" className="py-20 md:py-28">
+        <Container>
+          <ScrollReveal>
+            <SectionHeading
+              eyebrow="Trusted By"
+              title="Partners & Certifications"
+              subtitle="Blue-chip customers and world-class food-safety certifications that validate how we operate."
+            />
+          </ScrollReveal>
+
+          {/* Partner logo wall */}
+          <ScrollReveal>
+            <div className="mx-auto max-w-5xl">
+              <p className="mb-4 text-center text-sm font-semibold uppercase tracking-widest text-foreground-muted">
+                Blue-Chip Partners
+              </p>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                {partners.map((partner) => (
+                  <div
+                    key={partner.name}
+                    className="flex h-28 items-center justify-center rounded-xl border border-border bg-white px-6 py-5 transition-shadow hover:shadow-md"
+                  >
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        fill
+                        sizes="(min-width: 1024px) 180px, (min-width: 640px) 220px, 45vw"
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Certifications — badges replace the old text pills */}
+          <ScrollReveal>
+            <div className="mx-auto mt-12 max-w-2xl">
+              <CertificationBadges size="lg" label="Certifications" />
+            </div>
+          </ScrollReveal>
         </Container>
       </section>
     </main>

@@ -29,7 +29,7 @@ export function SectionHeading({
         <span
           className={cn(
             "mb-3 inline-block text-sm font-semibold uppercase tracking-widest",
-            light ? "text-secondary" : "text-primary"
+            light ? "text-secondary" : "text-coral"
           )}
         >
           {eyebrow}

@@ -39,7 +39,7 @@ const contentBlocks: ContentBlock[] = [
   {
     heading: "Growing Together",
     paragraph:
-      "Our impact extends far beyond our products. With over 3,500 employees across 12 countries, we are committed to building careers, developing talent, and investing in the communities where we operate. From apprenticeship programs to community health initiatives, we grow together with the people we serve.",
+      "Our impact extends far beyond our products. From 30 employees in 2018 to 200+ today — with 60+ upskilled through high-skill training — we are committed to building careers, developing talent and investing in the communities that host our Ghana operations. Through our chairship of the Food For All Africa Advisory Board, our work also reaches 10,000+ people fed every month.",
     linkText: "Community impact",
     linkHref: "/about#community",
     gradientFrom: "from-secondary",

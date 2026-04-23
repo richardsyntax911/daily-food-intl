@@ -75,7 +75,7 @@ export function NewsPageContent() {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="bg-primary py-24 md:py-32">
+      <section className="bg-coral py-24 md:py-32">
         <Container>
           <ScrollReveal>
             <div className="text-center">

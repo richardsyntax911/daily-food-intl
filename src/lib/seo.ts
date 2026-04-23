@@ -72,7 +72,6 @@ export function generateOrganizationJsonLd() {
       email: COMPANY.contact.email,
     },
     sameAs: Object.values(COMPANY.socialLinks),
-    tickerSymbol: COMPANY.stockTicker.symbol,
   };
 }
 

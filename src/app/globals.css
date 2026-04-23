@@ -6,13 +6,22 @@ html {
 
 @theme {
   /* === Daily Food Brand Colors === */
-  /* Sampled directly from the Daily Food logo */
+  /* Sampled from the Daily Food logo + the Nov 2022 management deck. */
 
   /* Logo palette */
   --color-df-green: #00A050;       /* logo green (F curve) */
   --color-df-orange: #F09030;      /* logo orange (D curve) */
   --color-df-yellow: #F0C030;      /* logo yellow (top accent) */
   --color-df-navy: #202030;        /* logo wordmark text */
+
+  /* Deck "brand voice" color — coral/salmon.
+     Used across the Nov 2022 deck for every section eyebrow, every slide
+     title, the cover page gradient, and full-bleed panels on slides
+     9 / 13 / 15 / 18 / 19. Green is used sparingly by comparison, so we
+     elevate coral to a first-class brand color on the site. */
+  --color-coral: #EF6F5C;
+  --color-coral-dark: #D85B4A;     /* pressed / hover */
+  --color-coral-light: #F58B7A;    /* subtle gradients */
 
   /* Boss Baker sub-brand colors (do not change — owned by the Boss Baker line) */
   --color-bb-burgundy: #791619;
@@ -21,13 +30,17 @@ html {
   --color-bb-light-orange: #F9B233;
   --color-bb-dark-orange: #EA7825;
 
-  /* Semantic tokens — now anchored to the Daily Food logo */
+  /* Semantic tokens
+     - primary = logo green, reserved for buttons, certifications, positive
+       "CONTEXT"-style signals (matches how the deck uses green sparingly).
+     - coral is the new full-bleed hero / eyebrow color. */
   --color-primary: #00A050;         /* logo green */
   --color-primary-dark: #00803F;    /* darker green for hover/pressed */
   --color-primary-light: #2CBE6D;   /* lighter green for subtle backgrounds */
   --color-secondary: #F09030;       /* logo orange */
   --color-secondary-dark: #D67820;  /* darker orange for hover */
   --color-accent: #F0C030;          /* logo yellow */
+  --color-accent-dark: #D9A81A;     /* darker yellow for gradients */
   --color-foreground: #202030;      /* logo navy (softer than pure black) */
   --color-foreground-muted: #4B5563;
   --color-background: #FFFFFF;
@@ -43,6 +56,10 @@ html {
 body {
   background: var(--color-background);
   color: var(--color-foreground);
+  /* Prevent phantom horizontal scroll from entry-animation transforms
+     (e.g. ScrollReveal's direction="right" starts children translated +40px).
+     Uses `clip` instead of `hidden` so position: sticky still works. */
+  overflow-x: clip;
 }
 
 /* === Custom Animations === */

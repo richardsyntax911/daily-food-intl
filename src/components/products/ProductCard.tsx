@@ -1,59 +1,83 @@
 "use client";
 
-import type { Product } from "@/data/brands";
-import { getBrandBySlug } from "@/data/brands";
+import Image from "next/image";
+import type { Product, MarketId } from "@/data/brands";
+import { getBrandBySlug, getVariant, resolveProductImage } from "@/data/brands";
 
 interface ProductCardProps {
   product: Product;
-  brandName?: string;
+  market?: MarketId;
+  onClick?: (product: Product) => void;
 }
 
-export function ProductCard({ product, brandName }: ProductCardProps) {
-  const brand = getBrandBySlug(product.brandSlug);
-  const displayBrandName = brandName ?? brand?.name ?? product.brandSlug;
-  const primaryColor = brand?.primaryColor ?? "#791619";
-  const secondaryColor = brand?.secondaryColor ?? "#F9B233";
+export function ProductCard({ product, market = "ghana", onClick }: ProductCardProps) {
+  /* Resolve the right variant for the selected market — with graceful fallback */
+  const variant = getVariant(product, market) ?? product.variants[0];
+  const brand = getBrandBySlug(variant.brandSlug);
+  const imageUrl = resolveProductImage(variant, product);
+
+  const displayName = variant.name;
+  const displayDescription = variant.description;
+  const displayBrandName = brand?.name ?? variant.brandSlug;
 
   return (
-    <div className="group overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-md">
-      {/* Image area: colored gradient placeholder */}
-      <div
-        className="aspect-square"
-        style={{
-          background: `linear-gradient(135deg, ${primaryColor}33, ${secondaryColor}55)`,
-        }}
-      >
-        <div className="flex h-full items-center justify-center">
-          <span className="text-5xl font-bold opacity-15">
-            {product.name.charAt(0)}
-          </span>
+    <button
+      type="button"
+      onClick={() => onClick?.(product)}
+      className="group flex w-full flex-col overflow-hidden rounded-2xl bg-white text-left shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+    >
+      {/* Pack shot on yellow sunburst — matches catalogue branding */}
+      <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-[#F4C82E] via-[#F0B020] to-[#E89A0E]">
+        {/* Sunburst rays */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.35)_0%,_transparent_60%)]" />
+        <div className="relative flex h-full items-center justify-center p-6">
+          <div className="relative h-full w-full">
+            <Image
+              src={imageUrl}
+              alt={`${displayName} — ${displayBrandName}`}
+              fill
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              className="object-contain transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
         </div>
       </div>
 
       {/* Body */}
-      <div className="p-4">
-        {/* Brand name badge */}
+      <div className="flex flex-1 flex-col p-5">
+        {/* Brand badge */}
         <span
-          className="inline-block rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white"
-          style={{ backgroundColor: primaryColor }}
+          className="self-start rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white"
+          style={{ backgroundColor: "#791619" }}
         >
           {displayBrandName}
         </span>
 
-        <h3 className="mt-2 font-semibold text-foreground">
-          {product.name}
+        <h3 className="mt-3 font-heading text-lg text-foreground">
+          {displayName}
         </h3>
-        <p className="mt-1 text-sm text-foreground-muted">
-          {product.description}
+
+        <p className="mt-1 line-clamp-2 text-sm text-foreground-muted">
+          {displayDescription}
         </p>
 
-        {/* Weight badge */}
-        <div className="mt-3">
-          <span className="rounded-full bg-surface px-3 py-0.5 text-xs font-medium text-foreground-muted">
-            {product.weight}
+        {/* Meta row: category + nutrition highlight */}
+        <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-border pt-3">
+          <span className="rounded-full bg-surface px-2.5 py-0.5 text-xs font-medium text-foreground-muted">
+            {product.category}
           </span>
+          {product.nutrition && (
+            <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+              {product.nutrition.energyKcal.toFixed(0)} kcal / 100g
+            </span>
+          )}
+          {product.bunVariants && (
+            <span className="rounded-full bg-coral/10 px-2.5 py-0.5 text-xs font-medium text-coral">
+              {product.bunVariants.length} variants
+            </span>
+          )}
         </div>
       </div>
-    </div>
+    </button>
   );
 }

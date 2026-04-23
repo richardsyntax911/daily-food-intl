@@ -47,7 +47,7 @@ export function ArticleContent({ article }: ArticleContentProps) {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="bg-primary py-20 md:py-28">
+      <section className="bg-coral py-20 md:py-28">
         <Container>
           <ScrollReveal>
             <div className="mx-auto max-w-3xl text-center">

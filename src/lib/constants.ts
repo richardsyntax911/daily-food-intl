@@ -1,42 +1,43 @@
 export const SITE_NAME = "Daily Food Limited International";
-export const SITE_SHORT_NAME = "Daily Food Intl";
-export const SITE_TAGLINE = "Nourishing Lives, Building Brands";
+export const SITE_SHORT_NAME = "Daily Food";
+export const SITE_TAGLINE = "Be Smart, Eat Smart";
 export const SITE_DESCRIPTION =
-  "Africa's leading food manufacturing company. Home to Boss Baker, Golden Harvest, FreshBite, Mama's Kitchen, and TropiFruit.";
+  "West African food manufacturer. Home to Boss Baker and Big Boss — baking an African champion from Ghana to 15 markets across the continent.";
 export const SITE_URL = "https://www.dailyfoodintl.com";
 
 export const COMPANY = {
   name: "Daily Food Limited International",
-  shortName: "Daily Food Intl",
-  tagline: "Nourishing Lives, Building Brands",
-  founded: 2008,
+  shortName: "Daily Food",
+  tagline: "Be Smart, Eat Smart",
+  founded: 2017,
   headquarters: {
     city: "Accra",
     country: "Ghana",
-    address: "15 Industrial Avenue, North Industrial Area",
-    postalCode: "GA-100-5620",
-  },
-  stockTicker: {
-    symbol: "DFL",
-    exchange: "GSE",
-    price: "4.25",
-    change: "+0.12",
-    changePercent: "+2.9%",
+    // TODO: confirm exact street address; deck only specifies Ghana base near Tema port.
+    address: "Accra, Ghana",
+    postalCode: "",
   },
   stats: {
-    employees: "3,500+",
-    countries: "12",
-    brands: "5",
-    factorySquareFt: "250,000",
+    employees: "200+",
+    countries: "15",
+    brands: "2",
+    consumerReach: "400M+",
+  },
+  financials: {
+    // Per Nov 2022 management presentation to Sahel Capital.
+    breakeven: "October 2022",
+    debt: "0 — founder shareholder financed",
+    revenuePotential: "$450M",
+    marketSize: "$3.2B (cakes & biscuits, West Africa)",
   },
   socialLinks: {
+    // TODO: confirm actual handles; placeholders retained.
     linkedin: "https://linkedin.com/company/daily-food-intl",
-    twitter: "https://twitter.com/dailyfoodintl",
-    facebook: "https://facebook.com/dailyfoodintl",
-    instagram: "https://instagram.com/dailyfoodintl",
-    youtube: "https://youtube.com/@dailyfoodintl",
+    facebook: "https://facebook.com/bossbakerghana",
+    instagram: "https://instagram.com/bigboss.nigeria",
   },
   contact: {
+    // TODO: confirm actual numbers/emails with client.
     phone: "+233 30 222 7890",
     email: "info@dailyfoodintl.com",
     investorEmail: "investors@dailyfoodintl.com",
@@ -59,11 +60,8 @@ export const NAV_ITEMS = [
     label: "Our Brands",
     href: "/brands",
     megaMenu: [
-      { label: "Boss Baker", href: "/brands/boss-baker", description: "Food on the go" },
-      { label: "Golden Harvest", href: "/brands/golden-harvest", description: "Nature's finest grains" },
-      { label: "FreshBite", href: "/brands/freshbite", description: "Snack smart, live bold" },
-      { label: "Mama's Kitchen", href: "/brands/mamas-kitchen", description: "Home taste, anywhere" },
-      { label: "TropiFruit", href: "/brands/tropifruit", description: "Pure tropical refreshment" },
+      { label: "Boss Baker", href: "/brands/boss-baker", description: "Cakes, creams, wafers and snacks" },
+      { label: "Big Boss", href: "/brands/big-boss", description: "Everyday value snacking" },
       { label: "All Products", href: "/products", description: "Browse the full product catalog" },
     ],
   },
@@ -71,10 +69,10 @@ export const NAV_ITEMS = [
     label: "Sustainability",
     href: "/sustainability",
     megaMenu: [
-      { label: "Our Commitments", href: "/sustainability", description: "ESG strategy overview" },
-      { label: "Environment", href: "/sustainability#environment", description: "Reducing our footprint" },
-      { label: "Community", href: "/sustainability#community", description: "Empowering communities" },
-      { label: "Supply Chain", href: "/sustainability#supply-chain", description: "Responsible sourcing" },
+      { label: "Planet", href: "/sustainability#planet", description: "Pursuing Net Zero" },
+      { label: "People", href: "/sustainability#people", description: "30 to 200+ and growing" },
+      { label: "Prosperity", href: "/sustainability#prosperity", description: "Food For All Africa" },
+      { label: "Governance", href: "/sustainability#governance", description: "ISO 22000 & FSSC 22000" },
     ],
   },
   {

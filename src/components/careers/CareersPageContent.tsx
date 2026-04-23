@@ -38,7 +38,7 @@ const cultureValues = [
     title: "Diversity",
     icon: Globe,
     description:
-      "Our team spans 12 countries. We celebrate different perspectives and believe diversity drives better outcomes.",
+      "Our Ghana-based team delivers across 15 African markets. We celebrate different perspectives and believe diversity drives better outcomes.",
   },
   {
     title: "Benefits",
@@ -159,7 +159,7 @@ export function CareersPageContent() {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="bg-primary py-24 md:py-32">
+      <section className="bg-coral py-24 md:py-32">
         <Container>
           <ScrollReveal>
             <div className="text-center">
@@ -221,7 +221,7 @@ export function CareersPageContent() {
             <SectionHeading
               eyebrow="Open Positions"
               title="Current Opportunities"
-              subtitle={`We have ${jobListings.length} open positions across our global offices.`}
+              subtitle={`We have ${jobListings.length} open ${jobListings.length === 1 ? "position" : "positions"} at our Accra, Ghana headquarters.`}
             />
           </ScrollReveal>
 

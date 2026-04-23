@@ -3,7 +3,8 @@
 import {
   Leaf,
   Users,
-  Truck,
+  HeartHandshake,
+  ShieldCheck,
   Recycle,
   Sprout,
   Package,
@@ -16,7 +17,6 @@ import {
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { Button } from "@/components/ui/Button";
 import { sustainabilityInitiatives } from "@/data/company";
 
 /* ------------------------------------------------------------------ */
@@ -32,49 +32,61 @@ const iconMap: Record<string, React.ElementType> = {
   droplets: Droplets,
   heart: Heart,
   globe: Globe,
+  users: Users,
+  "shield-check": ShieldCheck,
 };
 
 /* ------------------------------------------------------------------ */
-/*  Pillar data                                                        */
+/*  Four ESG pillars — mirrors the Nov 2022 deck's                     */
+/*  "With sustainability baked in" slide.                              */
 /* ------------------------------------------------------------------ */
 const pillars = [
   {
-    title: "Environment",
+    id: "planet",
+    title: "Planet",
     icon: Leaf,
     description:
-      "Minimizing our environmental footprint through waste reduction, renewable energy, and sustainable packaging across all operations.",
+      "Pursuing Net Zero and a net-positive contribution to the planet — from smarter packaging to carton-optimised logistics.",
     color: "border-t-green-500",
-    bg: "bg-green-50",
     iconBg: "bg-green-100 text-green-600",
   },
   {
-    title: "Community",
+    id: "people",
+    title: "People",
     icon: Users,
     description:
-      "Empowering the communities where we operate through farmer support programs, nutrition education, and local economic development.",
+      "Our people are our key asset — grown from 30 in 2018 to 200+ today, with 60+ upskilled through high-skill training.",
     color: "border-t-secondary",
-    bg: "bg-amber-50",
     iconBg: "bg-amber-100 text-amber-600",
   },
   {
-    title: "Supply Chain",
-    icon: Truck,
+    id: "prosperity",
+    title: "Prosperity",
+    icon: HeartHandshake,
     description:
-      "Building responsible supply chains through fair-trade sourcing, ethical labor practices, and transparency at every stage.",
+      "We chair the Advisory Board of Food For All Africa and localise inputs to source from the communities that host us.",
     color: "border-t-accent",
-    bg: "bg-orange-50",
     iconBg: "bg-orange-100 text-orange-600",
+  },
+  {
+    id: "governance",
+    title: "Governance",
+    icon: ShieldCheck,
+    description:
+      "Sustainability is a recurring Board agenda item, not an afterthought — backed by ISO 22000 and FSSC 22000 certification.",
+    color: "border-t-primary",
+    iconBg: "bg-primary/10 text-primary",
   },
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Impact statistics                                                  */
+/*  Impact statistics — all deck-backed (Nov 2022).                    */
 /* ------------------------------------------------------------------ */
 const impactStats = [
-  { value: "40%", label: "Waste Reduction Since 2020" },
-  { value: "5,000+", label: "Smallholder Farmers Supported" },
-  { value: "65%", label: "Sustainable Packaging" },
-  { value: "50%", label: "Solar-Powered HQ" },
+  { value: "20M", label: "Plastic Bags Saved Per Year" },
+  { value: "30→200", label: "Employees Grown Since 2018" },
+  { value: "10k+", label: "People Fed / Month via NGO Partnership" },
+  { value: "ISO + FSSC", label: "22000 Certified" },
 ];
 
 export function SustainabilityContent() {
@@ -83,17 +95,17 @@ export function SustainabilityContent() {
       {/* ============================================================ */}
       {/*  HERO                                                         */}
       {/* ============================================================ */}
-      <section className="bg-primary py-24 md:py-32">
+      <section className="bg-gradient-to-br from-accent via-accent-dark to-secondary py-24 md:py-32">
         <Container>
           <ScrollReveal>
             <div className="text-center">
               <h1 className="font-heading text-4xl text-white md:text-5xl lg:text-6xl">
-                Sustainability
+                Sustainability Baked In
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-                Our commitment to environmental stewardship, community
-                empowerment, and responsible business practices across every
-                market we serve.
+                Four ESG pillars guide how we grow — Planet, People, Prosperity
+                and Governance. Not a separate initiative; embedded in how we
+                operate.
               </p>
             </div>
           </ScrollReveal>
@@ -101,25 +113,26 @@ export function SustainabilityContent() {
       </section>
 
       {/* ============================================================ */}
-      {/*  THREE PILLARS                                                */}
+      {/*  FOUR PILLARS                                                 */}
       {/* ============================================================ */}
-      <section id="environment" className="py-20 md:py-28">
+      <section className="py-20 md:py-28">
         <Container>
           <ScrollReveal>
             <SectionHeading
               eyebrow="Our Approach"
-              title="Three Pillars of Sustainability"
-              subtitle="A holistic framework that guides how we grow responsibly."
+              title="Four Pillars of Sustainability"
+              subtitle="The ESG framework that guides every decision we make."
             />
           </ScrollReveal>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {pillars.map((pillar, index) => {
               const Icon = pillar.icon;
               return (
-                <ScrollReveal key={pillar.title} delay={index * 0.15}>
+                <ScrollReveal key={pillar.title} delay={index * 0.12}>
                   <div
-                    className={`rounded-2xl border border-border border-t-4 ${pillar.color} bg-white p-8 transition-shadow hover:shadow-lg`}
+                    id={pillar.id}
+                    className={`h-full scroll-mt-24 rounded-2xl border border-border border-t-4 ${pillar.color} bg-white p-8 transition-shadow hover:shadow-lg`}
                   >
                     <div
                       className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl ${pillar.iconBg}`}
@@ -143,7 +156,7 @@ export function SustainabilityContent() {
       {/* ============================================================ */}
       {/*  INITIATIVES — zigzag layout                                  */}
       {/* ============================================================ */}
-      <section id="community" className="bg-surface py-20 md:py-28">
+      <section className="bg-surface py-20 md:py-28">
         <Container>
           <ScrollReveal>
             <SectionHeading
@@ -185,7 +198,7 @@ export function SustainabilityContent() {
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                           <Icon className="h-5 w-5 text-primary" />
                         </div>
-                        <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+                        <span className="text-sm font-semibold uppercase tracking-widest text-coral">
                           Initiative
                         </span>
                       </div>
@@ -215,40 +228,20 @@ export function SustainabilityContent() {
       {/* ============================================================ */}
       {/*  IMPACT STATS BAR                                             */}
       {/* ============================================================ */}
-      <section id="supply-chain" className="bg-primary py-16 md:py-20">
+      <section className="bg-primary py-16 md:py-20">
         <Container>
           <ScrollReveal>
             <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4">
               {impactStats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-heading text-4xl text-white md:text-5xl">
+                  <p className="font-heading text-3xl text-white md:text-4xl lg:text-5xl">
                     {stat.value}
                   </p>
-                  <p className="mt-2 text-sm uppercase tracking-wider text-white/70">
+                  <p className="mt-2 text-xs uppercase tracking-wider text-white/70 md:text-sm">
                     {stat.label}
                   </p>
                 </div>
               ))}
-            </div>
-          </ScrollReveal>
-        </Container>
-      </section>
-
-      {/* ============================================================ */}
-      {/*  CTA — Download Report                                        */}
-      {/* ============================================================ */}
-      <section className="py-20 md:py-28">
-        <Container>
-          <ScrollReveal>
-            <div className="mx-auto max-w-2xl text-center">
-              <SectionHeading
-                eyebrow="Annual Report"
-                title="2025 Sustainability Report"
-                subtitle="Read the full details of our environmental, social, and governance performance over the past year."
-              />
-              <Button href="#" size="lg">
-                Download Report
-              </Button>
             </div>
           </ScrollReveal>
         </Container>

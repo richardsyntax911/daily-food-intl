@@ -2,10 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Linkedin,
-  Twitter,
   Facebook,
   Instagram,
-  Youtube,
   Mail,
   Phone,
   MapPin,
@@ -40,12 +38,12 @@ const audienceColumns = [
   },
   {
     heading: "For Investors",
-    description: "DFL on the Ghana Stock Exchange",
+    description: "Partner in our growth",
     links: [
       { label: "Investor Relations", href: "/investors" },
-      { label: "Stock Information (DFL:GSE)", href: "/investors" },
-      { label: "Annual Reports", href: "/investors" },
-      { label: "Corporate Governance", href: "/investors" },
+      { label: "Our Story", href: "/about" },
+      { label: "Sustainability Report", href: "/sustainability" },
+      { label: "Contact IR", href: "/contact" },
     ],
   },
   {
@@ -68,10 +66,8 @@ const legalLinks = [
 
 const socialIcons = [
   { icon: Linkedin, href: COMPANY.socialLinks.linkedin, label: "LinkedIn" },
-  { icon: Twitter, href: COMPANY.socialLinks.twitter, label: "Twitter" },
   { icon: Facebook, href: COMPANY.socialLinks.facebook, label: "Facebook" },
   { icon: Instagram, href: COMPANY.socialLinks.instagram, label: "Instagram" },
-  { icon: Youtube, href: COMPANY.socialLinks.youtube, label: "YouTube" },
 ];
 
 export function Footer() {
@@ -102,8 +98,8 @@ export function Footer() {
               className="mb-4 h-12 w-auto"
             />
             <p className="mb-6 text-sm leading-relaxed">
-              Nourishing lives and building brands across Africa and beyond since
-              2008.
+              Be Smart, Eat Smart. Baking an African champion from Ghana to 15
+              markets since 2017.
             </p>
             {/* Social icons */}
             <div className="flex gap-3">

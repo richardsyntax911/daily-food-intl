@@ -36,13 +36,14 @@ export function AboutPreview() {
                 </div>
               </div>
 
-              {/* Floating stats badge */}
-              <div className="absolute -bottom-4 -right-4 md:bottom-6 md:right-6 bg-white rounded-xl shadow-lg px-6 py-4">
-                <div className="text-2xl font-heading text-primary">
-                  Since 2008
+              {/* Floating stats badge — sits inside the card on mobile,
+                  hangs off the corner on md+ where there's room for overlap. */}
+              <div className="absolute bottom-4 right-4 md:-bottom-4 md:-right-4 lg:bottom-6 lg:right-6 bg-white rounded-xl shadow-lg px-4 py-3 md:px-6 md:py-4">
+                <div className="text-xl md:text-2xl font-heading text-primary">
+                  Since 2017
                 </div>
-                <div className="text-sm text-foreground-muted">
-                  Nourishing Africa
+                <div className="text-xs md:text-sm text-foreground-muted">
+                  Baking an African Champion
                 </div>
               </div>
             </div>
@@ -51,7 +52,7 @@ export function AboutPreview() {
           {/* Right: Text content */}
           <ScrollReveal direction="right">
             <div>
-              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-primary">
+              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-coral">
                 Who We Are
               </span>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground">
