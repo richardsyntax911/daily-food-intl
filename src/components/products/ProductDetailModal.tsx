@@ -40,22 +40,26 @@ export function ProductDetailModal({ product, market, onClose }: ProductDetailMo
   const otherMarkets = product.variants.filter((v) => v.market !== market);
 
   return (
+    /* Outer wrapper — scrolls the whole modal on mobile. Full-bleed
+       on mobile (no padding, no rounded corners) for max content
+       breathing; becomes a centred card on tablet+. */
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm md:items-center md:p-8"
+      className="fixed inset-0 z-50 flex items-stretch justify-center overflow-y-auto bg-black/60 backdrop-blur-sm sm:items-start sm:p-4 md:items-center md:p-8"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={variant.name}
     >
       <div
-        className="relative w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl"
+        className="relative flex min-h-full w-full flex-col bg-white shadow-2xl sm:min-h-0 sm:max-w-5xl sm:overflow-hidden sm:rounded-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
+        {/* Close button — sticky/fixed to top-right so it stays reachable
+            while the user scrolls the modal body on mobile. */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-foreground shadow-md transition-all hover:bg-white hover:shadow-lg"
+          className="fixed right-3 top-3 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-foreground shadow-md backdrop-blur-sm transition-all hover:bg-white hover:shadow-lg sm:absolute sm:right-4 sm:top-4"
           aria-label="Close product details"
         >
           <X className="h-5 w-5" />
@@ -63,11 +67,12 @@ export function ProductDetailModal({ product, market, onClose }: ProductDetailMo
 
         <div className="grid gap-0 md:grid-cols-[1fr_1.2fr] lg:grid-cols-[1.1fr_1.3fr]">
           {/* Pack shot panel — catalogue yellow sunburst.
-              Mobile: 4/5 ratio keeps the pack visible without swallowing
-              the whole viewport before the content reveals. */}
-          <div className="relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#F4C82E] via-[#F0B020] to-[#E89A0E] md:aspect-auto md:h-auto md:min-h-[500px]">
+              Mobile: 4/3 ratio keeps the pack compact (was 4/5, which
+              consumed 53% of viewport height). Now the product title,
+              brand and nutrition all appear above the fold on mobile. */}
+          <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#F4C82E] via-[#F0B020] to-[#E89A0E] sm:aspect-[4/3] md:aspect-auto md:h-auto md:min-h-[500px]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.4)_0%,_transparent_65%)]" />
-            <div className="relative h-[80%] w-[80%]">
+            <div className="relative h-[85%] w-[70%] sm:h-[80%] sm:w-[80%]">
               <Image
                 src={imageUrl}
                 alt={`${variant.name} — ${brand?.name ?? variant.brandSlug}`}
@@ -79,8 +84,11 @@ export function ProductDetailModal({ product, market, onClose }: ProductDetailMo
             </div>
           </div>
 
-          {/* Content panel */}
-          <div className="max-h-[70vh] overflow-y-auto p-5 sm:p-6 md:max-h-[85vh] md:p-8 lg:p-10">
+          {/* Content panel — on mobile the OUTER wrapper handles scroll,
+              so no nested max-h / overflow here. On desktop the content
+              column gets its own max-h so the pack and content stay
+              side-by-side without forcing page scroll. */}
+          <div className="p-5 sm:p-6 md:max-h-[85vh] md:overflow-y-auto md:p-8 lg:p-10">
             {/* Brand + category */}
             <div className="flex flex-wrap items-center gap-2">
               <span
