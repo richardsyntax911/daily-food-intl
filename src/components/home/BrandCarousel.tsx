@@ -99,80 +99,77 @@ export function BrandCarousel() {
   };
 
   return (
-    <section className="bg-white py-16 md:py-20">
+    /* Full-width section. Warm cream bg (#FFF9EF) pairs with the yellow-
+       sunburst pack shots and provides a breath between the surrounding
+       white sections, without needing a boxed card treatment. */
+    <section className="bg-background-warm py-16 md:py-20">
       <Container>
-        {/* Boxed card wraps the whole showcase — heading, marquee and CTA
-            all live inside a single rounded container on the page. The
-            warm cream bg visually pairs with the yellow-sunburst pack
-            shots inside and sets the section apart from the white
-            sections above and below. */}
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-background-warm px-4 py-10 shadow-sm sm:px-6 md:px-8 md:py-14 lg:px-12 lg:py-16">
-          <ScrollReveal>
-            <SectionHeading
-              eyebrow="Our Portfolio"
-              title="Trusted Brands, Loved Across Africa"
-              subtitle="Click any pack to see ingredients, nutrition and market-specific names. Hover the row to pause — swipe or use the arrows to browse."
-            />
-          </ScrollReveal>
+        <ScrollReveal>
+          <SectionHeading
+            eyebrow="Our Portfolio"
+            title="Trusted Brands, Loved Across Africa"
+            subtitle="Click any pack to see ingredients, nutrition and market-specific names. Hover the row to pause — swipe or use the arrows to browse."
+          />
+        </ScrollReveal>
+      </Container>
 
-          {/* Carousel inside the box */}
-          <div
-            className="group relative -mx-4 mt-8 sm:-mx-6 md:-mx-8 lg:-mx-12"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          >
-            {/* Left arrow — visible on hover (desktop), always visible on touch */}
-            <button
-              type="button"
-              aria-label="Scroll products left"
-              onClick={() => scrollByCards(-1)}
-              className="absolute left-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-md transition-all hover:bg-primary hover:text-white hover:shadow-lg group-hover:flex md:flex md:opacity-0 md:group-hover:opacity-100"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
+      {/* Edge-to-edge carousel */}
+      <div
+        className="group relative mt-8"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        {/* Left arrow — visible on hover (desktop), always visible on touch */}
+        <button
+          type="button"
+          aria-label="Scroll products left"
+          onClick={() => scrollByCards(-1)}
+          className="absolute left-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-md transition-all hover:bg-primary hover:text-white hover:shadow-lg group-hover:flex md:flex md:opacity-0 md:group-hover:opacity-100"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
 
-            {/* Right arrow */}
-            <button
-              type="button"
-              aria-label="Scroll products right"
-              onClick={() => scrollByCards(1)}
-              className="absolute right-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-md transition-all hover:bg-primary hover:text-white hover:shadow-lg group-hover:flex md:flex md:opacity-0 md:group-hover:opacity-100"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+        {/* Right arrow */}
+        <button
+          type="button"
+          aria-label="Scroll products right"
+          onClick={() => scrollByCards(1)}
+          className="absolute right-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white text-foreground shadow-md transition-all hover:bg-primary hover:text-white hover:shadow-lg group-hover:flex md:flex md:opacity-0 md:group-hover:opacity-100"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
 
-            {/* Scrollable track — no fade masks; the card's rounded
-                corners serve as the visual boundary */}
-            <div
-              ref={trackRef}
-              className="scrollbar-hide overflow-x-auto scroll-smooth"
-              style={{ scrollSnapType: "x proximity" }}
-            >
-              <div className="flex w-max items-stretch gap-5 px-4 sm:px-6 md:gap-6 md:px-8 lg:px-12">
-                {doubled.map((product, i) => (
-                  <ProductTile
-                    key={`${product.id}-${i}`}
-                    product={product}
-                    onClick={() => setSelectedProduct(product)}
-                  />
-                ))}
-              </div>
-            </div>
+        {/* Scrollable track */}
+        <div
+          ref={trackRef}
+          className="scrollbar-hide overflow-x-auto scroll-smooth"
+          style={{ scrollSnapType: "x proximity" }}
+        >
+          <div className="flex w-max items-stretch gap-5 px-4 sm:px-6 md:gap-6 md:px-8 lg:px-12">
+            {doubled.map((product, i) => (
+              <ProductTile
+                key={`${product.id}-${i}`}
+                product={product}
+                onClick={() => setSelectedProduct(product)}
+              />
+            ))}
           </div>
-
-          {/* CTA inside the box */}
-          <ScrollReveal>
-            <div className="mt-10 flex justify-center">
-              <Link
-                href="/products"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-dark hover:shadow-md"
-              >
-                Explore All Products
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </ScrollReveal>
         </div>
+      </div>
+
+      {/* CTA strip */}
+      <Container>
+        <ScrollReveal>
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/products"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-dark hover:shadow-md"
+            >
+              Explore All Products
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </ScrollReveal>
       </Container>
 
       {/* Detail modal — shared with the Products page */}
