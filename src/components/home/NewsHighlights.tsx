@@ -56,7 +56,7 @@ const newsItems: NewsItem[] = [
 
 export function NewsHighlights() {
   return (
-    <section className="bg-background-warm py-20">
+    <section className="bg-white py-20">
       <Container>
         <ScrollReveal>
           <SectionHeading

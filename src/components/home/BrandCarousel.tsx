@@ -99,7 +99,7 @@ export function BrandCarousel() {
   };
 
   return (
-    <section className="bg-background-warm py-16 md:py-20">
+    <section className="bg-white py-16 md:py-20">
       <Container>
         <ScrollReveal>
           <SectionHeading
@@ -137,8 +137,8 @@ export function BrandCarousel() {
         </button>
 
         {/* Edge fade masks */}
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-background-warm to-transparent md:w-28" />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-background-warm to-transparent md:w-28" />
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-white to-transparent md:w-28" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-white to-transparent md:w-28" />
 
         {/* Scrollable track — native overflow-x for touch/wheel, JS drives auto-scroll */}
         <div

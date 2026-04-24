@@ -28,7 +28,7 @@ export function SectionHeading({
       {eyebrow && (
         <span
           className={cn(
-            "mb-3 inline-block text-sm font-semibold uppercase tracking-widest",
+            "mb-3 inline-block text-sm font-extrabold uppercase tracking-[0.18em]",
             light ? "text-secondary" : "text-coral"
           )}
         >

@@ -61,7 +61,7 @@ export function StatsCounter() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-primary py-16" ref={ref}>
+    <section className="bg-white py-16 md:py-20" ref={ref}>
       <Container>
         <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4 lg:gap-12">
           {stats.map((stat, index) => (
@@ -77,10 +77,10 @@ export function StatsCounter() {
               }}
               className="text-center"
             >
-              <div className="text-3xl font-heading text-white sm:text-4xl md:text-5xl">
+              <div className="font-heading text-4xl text-primary sm:text-5xl md:text-6xl">
                 <AnimatedCounter stat={stat} isInView={isInView} />
               </div>
-              <div className="mt-2 text-xs uppercase tracking-wider text-white/70 sm:text-sm md:text-base">
+              <div className="mt-2 text-xs uppercase tracking-widest text-foreground-muted sm:text-sm">
                 {stat.label}
               </div>
             </motion.div>
