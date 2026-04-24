@@ -19,15 +19,18 @@ import {
 /* ------------------------------------------------------------------ */
 /*  Home-page Product Showcase — interactive auto-scroll carousel     */
 /*                                                                    */
-/*  Design:                                                           */
-/*   - Auto-scrolls right-to-left at ~35px/s (readable pace)          */
-/*   - Pauses while the user is hovering the row                      */
-/*   - Arrow buttons appear on hover (desktop) for precise navigation */
-/*   - Native horizontal scroll works on touch / mouse wheel          */
+/*  Behaviour:                                                        */
+/*   - Auto-scrolls right-to-left at ~36px/s                          */
+/*   - Pauses immediately on mouse hover (mouseenter -> mouseleave)   */
+/*   - Pauses on touch — explicit touchstart/touchend tracking so the */
+/*     auto-scroll never resumes while a finger is still on the row   */
+/*   - Pauses briefly on wheel / arrow-button interaction             */
+/*   - Native horizontal scroll for touch drag + mouse wheel          */
+/*   - touch-action: pan-x tells mobile browsers to commit to a       */
+/*     horizontal gesture without vertical-scroll hesitation          */
 /*   - Seamlessly loops by doubling the list and resetting scrollLeft */
 /*     when we cross the halfway mark                                 */
 /*   - Only shows products whose real Ghana pack shot is available    */
-/*     (prevents fallback-image duplicates in the marquee)            */
 /*                                                                    */
 /*  Clicking any tile opens the full ProductDetailModal.              */
 /* ------------------------------------------------------------------ */
@@ -41,15 +44,20 @@ export function BrandCarousel() {
   /* Duplicate for the seamless loop */
   const doubled = [...visibleProducts, ...visibleProducts];
 
-  /* Carousel state */
+  /* Carousel state — three independent pause sources so no timer has
+     to arbitrate. AutoScroll runs when all three are false. */
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const [isHovering, setIsHovering] = useState(false);
-  const [isUserScrolling, setIsUserScrolling] = useState(false);
-  const userScrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isHovering, setIsHovering] = useState(false);   // mouse over row
+  const [isTouching, setIsTouching] = useState(false);   // finger down
+  const [isWheeling, setIsWheeling] = useState(false);   // recent wheel / arrow
+  const wheelTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  /* RAF-driven auto-scroll — runs whenever nobody is hovering or scrubbing */
+  const shouldPause = isHovering || isTouching || isWheeling;
+
+  /* RAF-driven auto-scroll — right-to-left motion comes from increasing
+     scrollLeft (content visually moves left as the viewport pans right). */
   useEffect(() => {
-    if (isHovering || isUserScrolling) return;
+    if (shouldPause) return;
     let rafId: number;
     const tick = () => {
       const el = trackRef.current;
@@ -64,38 +72,36 @@ export function BrandCarousel() {
     };
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, [isHovering, isUserScrolling]);
+  }, [shouldPause]);
 
-  /* Detect manual scrolling (wheel / touch / drag) and pause auto-scroll
-     briefly so the user's interaction isn't fighting the RAF loop. */
+  /* Wheel / trackpad scroll — pause briefly while the user scrolls so
+     the RAF loop doesn't fight the browser's momentum. Auto-clears. */
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
-    const markInteracting = () => {
-      setIsUserScrolling(true);
-      if (userScrollTimer.current) clearTimeout(userScrollTimer.current);
-      userScrollTimer.current = setTimeout(() => setIsUserScrolling(false), 2500);
+    const onWheel = () => {
+      setIsWheeling(true);
+      if (wheelTimer.current) clearTimeout(wheelTimer.current);
+      wheelTimer.current = setTimeout(() => setIsWheeling(false), 1200);
     };
-    el.addEventListener("wheel", markInteracting, { passive: true });
-    el.addEventListener("touchstart", markInteracting, { passive: true });
+    el.addEventListener("wheel", onWheel, { passive: true });
     return () => {
-      el.removeEventListener("wheel", markInteracting);
-      el.removeEventListener("touchstart", markInteracting);
-      if (userScrollTimer.current) clearTimeout(userScrollTimer.current);
+      el.removeEventListener("wheel", onWheel);
+      if (wheelTimer.current) clearTimeout(wheelTimer.current);
     };
   }, []);
 
   /* Arrow-button navigation — scrolls by ~one tile width + gap.
-     Also marks "user interacting" so the RAF auto-scroll pauses. */
+     Uses the wheel-pause lane so the smooth scroll can complete. */
   const scrollByCards = (direction: 1 | -1) => {
     const el = trackRef.current;
     if (!el) return;
     const firstTile = el.querySelector<HTMLElement>("[data-tile]");
     const step = (firstTile?.offsetWidth ?? 240) + 20; // tile + gap
     el.scrollBy({ left: direction * step, behavior: "smooth" });
-    setIsUserScrolling(true);
-    if (userScrollTimer.current) clearTimeout(userScrollTimer.current);
-    userScrollTimer.current = setTimeout(() => setIsUserScrolling(false), 2500);
+    setIsWheeling(true);
+    if (wheelTimer.current) clearTimeout(wheelTimer.current);
+    wheelTimer.current = setTimeout(() => setIsWheeling(false), 1200);
   };
 
   return (
@@ -139,13 +145,23 @@ export function BrandCarousel() {
           <ChevronRight className="h-5 w-5" />
         </button>
 
-        {/* Scrollable track */}
+        {/* Scrollable track.
+            touch-action: pan-x — browser commits to horizontal pan
+            overscroll-behavior-x: contain — swipe doesn't trigger page nav
+            onTouchStart/End — pause auto-scroll only while finger is down */}
         <div
           ref={trackRef}
-          className="scrollbar-hide overflow-x-auto scroll-smooth"
-          style={{ scrollSnapType: "x proximity" }}
+          className="scrollbar-hide overflow-x-auto cursor-grab active:cursor-grabbing"
+          style={{
+            scrollSnapType: "x proximity",
+            touchAction: "pan-x",
+            overscrollBehaviorX: "contain",
+          }}
+          onTouchStart={() => setIsTouching(true)}
+          onTouchEnd={() => setIsTouching(false)}
+          onTouchCancel={() => setIsTouching(false)}
         >
-          <div className="flex w-max items-stretch gap-5 px-4 sm:px-6 md:gap-6 md:px-8 lg:px-12">
+          <div className="flex w-max items-stretch gap-4 px-4 sm:gap-5 sm:px-6 md:gap-6 md:px-8 lg:px-12">
             {doubled.map((product, i) => (
               <ProductTile
                 key={`${product.id}-${i}`}
@@ -222,9 +238,10 @@ function ProductTile({
         </div>
       </div>
 
-      {/* Body — extra vertical rhythm so the product name reads as a
-          distinct line, not crowded against the brand badge. */}
-      <div className="flex flex-col gap-3 p-4 md:p-5">
+      {/* Body — extra bottom padding so the product name isn't crammed
+          against the card's bottom edge. Generous vertical rhythm
+          between brand badge and product name. */}
+      <div className="flex flex-col gap-3 px-4 pt-4 pb-5 md:gap-4 md:px-5 md:pt-5 md:pb-6">
         <span
           className="self-start rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white"
           style={{ backgroundColor: "#791619" }}

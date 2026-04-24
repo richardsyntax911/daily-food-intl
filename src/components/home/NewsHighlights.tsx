@@ -47,7 +47,7 @@ export function NewsHighlights() {
     .slice(0, 3);
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-14 md:py-20">
       <Container>
         <ScrollReveal>
           <SectionHeading

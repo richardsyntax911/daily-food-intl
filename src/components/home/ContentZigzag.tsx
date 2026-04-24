@@ -50,7 +50,7 @@ const contentBlocks: ContentBlock[] = [
 
 export function ContentZigzag() {
   return (
-    <section className="py-20">
+    <section className="py-14 md:py-20">
       <Container>
         <div className="flex flex-col gap-16 lg:gap-24">
           {contentBlocks.map((block, index) => {

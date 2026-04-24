@@ -8,7 +8,11 @@ export function UtilityBar() {
   const { socialLinks } = COMPANY;
 
   return (
-    <div className="bg-primary text-white/80 text-xs">
+    /* Hidden on mobile to reclaim vertical space — Investors, Contact
+       and social links are reachable via the mobile hamburger menu,
+       and the ISO credential strip appears elsewhere (About page,
+       ProductDetailModal footer, etc.). */
+    <div className="hidden bg-primary text-white/80 text-xs md:block">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 sm:px-6 lg:px-8">
         {/* Credential strip — replaces the old GSE stock ticker since the
             company is private and founder-financed. */}
