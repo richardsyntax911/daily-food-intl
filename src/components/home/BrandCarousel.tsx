@@ -148,7 +148,13 @@ export function BrandCarousel() {
         {/* Scrollable track.
             touch-action: pan-x — browser commits to horizontal pan
             overscroll-behavior-x: contain — swipe doesn't trigger page nav
-            onTouchStart/End — pause auto-scroll only while finger is down */}
+            onTouchStart/End — pause auto-scroll only while finger is down
+
+            Vertical py-* on the inner flex row gives the hover shadow
+            breathing room INSIDE the track. overflow-x-auto implicitly
+            clips overflow-y (per CSS spec), so without this padding the
+            hover:shadow-xl on each card gets cropped at the track edges
+            and reads as a hard line below each card. */}
         <div
           ref={trackRef}
           className="scrollbar-hide overflow-x-auto cursor-grab active:cursor-grabbing"
@@ -161,7 +167,7 @@ export function BrandCarousel() {
           onTouchEnd={() => setIsTouching(false)}
           onTouchCancel={() => setIsTouching(false)}
         >
-          <div className="flex w-max items-stretch gap-4 px-4 sm:gap-5 sm:px-6 md:gap-6 md:px-8 lg:px-12">
+          <div className="flex w-max items-stretch gap-4 px-4 py-5 sm:gap-5 sm:px-6 md:gap-6 md:px-8 md:py-7 lg:px-12 lg:py-8">
             {doubled.map((product, i) => (
               <ProductTile
                 key={`${product.id}-${i}`}
@@ -173,10 +179,11 @@ export function BrandCarousel() {
         </div>
       </div>
 
-      {/* CTA strip */}
+      {/* CTA strip — extra top margin gives the hover shadow of the last
+          card room to land before the button. */}
       <Container>
         <ScrollReveal>
-          <div className="mt-10 flex justify-center">
+          <div className="mt-8 flex justify-center md:mt-10">
             <Link
               href="/products"
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-dark hover:shadow-md"
