@@ -141,13 +141,8 @@ export function BrandCarousel() {
               <ChevronRight className="h-5 w-5" />
             </button>
 
-            {/* Edge fade masks — fade into the box's warm cream so the
-                marquee dissolves at the rounded corners instead of hard-
-                clipping */}
-            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-background-warm to-transparent md:w-20" />
-            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-background-warm to-transparent md:w-20" />
-
-            {/* Scrollable track */}
+            {/* Scrollable track — no fade masks; the card's rounded
+                corners serve as the visual boundary */}
             <div
               ref={trackRef}
               className="scrollbar-hide overflow-x-auto scroll-smooth"
