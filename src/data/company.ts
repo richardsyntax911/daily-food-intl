@@ -161,14 +161,17 @@ export const partners: { name: string; logo: string; scale?: number }[] = [
 export const certifications = ["ISO 22000", "FSSC 22000"];
 
 /*
- * Sustainability framework — Nov 2022 deck "With sustainability baked in" slide.
+ * Sustainability framework — Nov 2022 deck "With sustainability baked in"
+ * slide, enriched with the December 2018 FoodForAll partnership story
+ * (Happy Ghana, "DailyFood Partners FoodForAll to Help the Needy").
+ *
  * Four ESG pillars: Planet, People, Prosperity, Governance.
  */
 export const sustainabilityInitiatives = [
   {
     title: "Planet — pursuing Net Zero",
     description:
-      "We are pursuing a net zero and net positive contribution to the planet. Our string packaging design saves 20 million plastic bags per year, and we've optimised logistics by carton size to cut unit emissions.",
+      "We are pursuing a net zero and net positive contribution to the planet. Our string packaging design — replacing plastic rubber bags — saves 20 million plastic bags per year, and we've optimised logistics by carton size to cut unit emissions.",
     icon: "leaf",
     stat: "20M",
     statLabel: "plastic bags saved per year",
@@ -176,23 +179,23 @@ export const sustainabilityInitiatives = [
   {
     title: "People — our key asset",
     description:
-      "Our employment grew from 30 to 200 people, with 350 targeted by 2023. We have delivered high-skill training to 60+ people since founding.",
+      "Our team has grown from 30 in 2018 to 200+ today. We invest in our people through structured high-skill training, with 60+ team members upskilled since founding.",
     icon: "users",
-    stat: "30→200",
-    statLabel: "employees grown since 2018",
+    stat: "30→200+",
+    statLabel: "team grown since 2018",
   },
   {
     title: "Prosperity — Food For All Africa",
     description:
-      "We chair the Advisory Board of Food For All Africa, an NGO that feeds 10,000+ people per month. We also localise inputs to source more from the communities that host us.",
+      "We chair the Advisory Board of Food For All Africa, the NGO founded by Chef Elijah Amoo Addo that feeds 10,000+ people per month. Through our partnership — launched at the maiden National Pastry Day at our Accra bakery in December 2018 — 300 vulnerable people receive free Boss Baker pastries every week, with regular donations to institutions like the Accra Psychiatric Hospital. We also localise inputs to source from the communities that host us.",
     icon: "heart",
-    stat: "10k+",
-    statLabel: "people fed per month via our NGO partnership",
+    stat: "300",
+    statLabel: "vulnerable people fed weekly via Boss Baker pastries",
   },
   {
     title: "Governance — sustainability from the top down",
     description:
-      "Our Board observes best practices, and sustainability is a recurring agenda item — not an afterthought. ISO 22000 and FSSC 22000 certified.",
+      "Our Board observes best practices, and sustainability is a recurring agenda item — not an afterthought. Our operations are ISO 22000 and FSSC 22000 certified, and Boss Baker is the only industrial bakery in Ghana to hold ISO 22000 certification.",
     icon: "shield-check",
     stat: "ISO + FSSC",
     statLabel: "22000 certified",
