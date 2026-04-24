@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Calendar, User } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, Calendar, User, ExternalLink } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import type { NewsArticle } from "@/data/news";
@@ -19,6 +20,8 @@ function categoryColor(category: NewsArticle["category"]) {
       return "bg-accent/10 text-accent";
     case "Sustainability":
       return "bg-green-100 text-green-800";
+    case "Interview":
+      return "bg-coral/10 text-coral";
     default:
       return "bg-gray-100 text-gray-800";
   }
@@ -61,7 +64,7 @@ export function ArticleContent({ article }: ArticleContentProps) {
               <h1 className="font-heading text-3xl text-white md:text-4xl lg:text-5xl">
                 {article.title}
               </h1>
-              <div className="mt-6 flex items-center justify-center gap-6 text-sm text-white/70">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/70">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="h-4 w-4" />
                   {formatDate(article.publishedDate)}
@@ -70,6 +73,12 @@ export function ArticleContent({ article }: ArticleContentProps) {
                   <User className="h-4 w-4" />
                   {article.author}
                 </span>
+                {article.sourceName && (
+                  <span className="flex items-center gap-1.5">
+                    <ExternalLink className="h-4 w-4" />
+                    {article.sourceName}
+                  </span>
+                )}
               </div>
             </div>
           </ScrollReveal>
@@ -83,10 +92,37 @@ export function ArticleContent({ article }: ArticleContentProps) {
         <Container>
           <ScrollReveal>
             <div className="mx-auto max-w-3xl">
-              {/* Placeholder image area */}
-              <div className="mb-10 aspect-video overflow-hidden rounded-2xl bg-gradient-to-br from-primary/15 via-secondary/20 to-accent/15" />
+              {/* Hero image */}
+              <div className="relative mb-10 aspect-video overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10">
+                <Image
+                  src={article.imageUrl}
+                  alt={article.title}
+                  fill
+                  sizes="(min-width: 1024px) 768px, 100vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
 
-              {/* Article text */}
+              {/* Source attribution — surfaces external publishing source */}
+              {article.sourceName && article.sourceUrl && (
+                <div className="mb-8 rounded-lg border border-border bg-surface p-4">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-foreground-muted">
+                    Originally published by
+                  </p>
+                  <a
+                    href={article.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
+                  >
+                    {article.sourceName}
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              )}
+
+              {/* Article body */}
               <div className="prose prose-lg max-w-none">
                 {paragraphs.map((paragraph, index) => (
                   <p
@@ -98,8 +134,8 @@ export function ArticleContent({ article }: ArticleContentProps) {
                 ))}
               </div>
 
-              {/* Back link */}
-              <div className="mt-12 border-t border-border pt-8">
+              {/* Footer — source attribution + back link */}
+              <div className="mt-12 flex flex-col gap-6 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
                 <Link
                   href="/news"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
@@ -107,6 +143,17 @@ export function ArticleContent({ article }: ArticleContentProps) {
                   <ArrowLeft className="h-4 w-4" />
                   Back to News
                 </Link>
+                {article.sourceUrl && (
+                  <a
+                    href={article.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-foreground-muted transition-colors hover:text-foreground"
+                  >
+                    Read the original article
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                )}
               </div>
             </div>
           </ScrollReveal>

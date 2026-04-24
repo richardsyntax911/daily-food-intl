@@ -1,60 +1,51 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { newsArticles, type NewsArticle } from "@/data/news";
 
-interface NewsItem {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  category: string;
-  gradientFrom: string;
-  gradientTo: string;
-  slug: string;
+/* Category badge colour — mirrors the /news page palette so chips look
+   consistent between home teaser and full news page. */
+function categoryColor(category: NewsArticle["category"]) {
+  switch (category) {
+    case "Press Release":
+      return "bg-primary/10 text-primary";
+    case "Company News":
+      return "bg-secondary/20 text-amber-800";
+    case "Product Launch":
+      return "bg-accent/10 text-accent";
+    case "Sustainability":
+      return "bg-green-100 text-green-800";
+    case "Interview":
+      return "bg-coral/10 text-coral";
+    default:
+      return "bg-gray-100 text-gray-800";
+  }
 }
 
-const newsItems: NewsItem[] = [
-  {
-    id: "news-1",
-    title: "DFLI Expands Operations to Three New West African Markets",
-    excerpt:
-      "Daily Food Limited International announces the launch of distribution networks in Senegal, Ivory Coast, and Cameroon, bringing our portfolio of brands to millions of new consumers.",
-    date: "March 5, 2026",
-    category: "Expansion",
-    gradientFrom: "from-primary",
-    gradientTo: "to-accent",
-    slug: "dfli-expands-west-africa",
-  },
-  {
-    id: "news-2",
-    title: "Boss Baker Wins Gold at African Food Excellence Awards",
-    excerpt:
-      "Our flagship brand Boss Baker has been recognized with the Gold Award for Product Innovation at the 2026 African Food Excellence Awards for the Classic Meat Pie range.",
-    date: "February 18, 2026",
-    category: "Awards",
-    gradientFrom: "from-secondary",
-    gradientTo: "to-accent",
-    slug: "boss-baker-gold-award",
-  },
-  {
-    id: "news-3",
-    title: "New State-of-the-Art Production Facility Breaks Ground",
-    excerpt:
-      "Construction begins on our newest 80,000 sq ft production facility, which will double our baked goods capacity and create 500 new jobs in the region.",
-    date: "January 30, 2026",
-    category: "Operations",
-    gradientFrom: "from-green-600",
-    gradientTo: "to-green-400",
-    slug: "new-production-facility",
-  },
-];
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
 
 export function NewsHighlights() {
+  /* Show the 3 most recent articles (featured first, then by date desc) */
+  const items = [...newsArticles]
+    .sort((a, b) => {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime();
+    })
+    .slice(0, 3);
+
   return (
     <section className="bg-white py-20">
       <Container>
@@ -62,51 +53,60 @@ export function NewsHighlights() {
           <SectionHeading
             eyebrow="Latest Updates"
             title="News & Media"
-            subtitle="Stay up to date with the latest from Daily Food Limited International."
+            subtitle="Press coverage, interviews and stories on Daily Food Limited International."
           />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {newsItems.map((item, index) => (
+          {items.map((item, index) => (
             <ScrollReveal key={item.id} delay={index * 0.15}>
-              <article className="group rounded-2xl bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
-                {/* Image placeholder */}
-                <div
-                  className={`aspect-video bg-gradient-to-br ${item.gradientFrom} ${item.gradientTo} relative overflow-hidden`}
-                >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white/20 text-sm tracking-widest uppercase">
-                      News Image
-                    </div>
-                  </div>
-                  {/* Category badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="inline-block rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-primary">
-                      {item.category}
-                    </span>
-                  </div>
+              <Link
+                href={`/news/${item.slug}`}
+                className="group flex h-full flex-col rounded-2xl bg-white overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                {/* Real article image */}
+                <div className="relative aspect-video bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden">
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Category chip */}
+                  <span
+                    className={`absolute top-4 left-4 inline-block rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm ${categoryColor(item.category)}`}
+                  >
+                    {item.category}
+                  </span>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
+                {/* Body */}
+                <div className="flex flex-1 flex-col p-6">
                   <time className="text-xs text-foreground-muted uppercase tracking-wider">
-                    {item.date}
+                    {formatDate(item.publishedDate)}
                   </time>
                   <h3 className="mt-2 font-heading text-lg text-foreground line-clamp-2 group-hover:text-primary transition-colors">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm text-foreground-muted leading-relaxed line-clamp-3">
+                  <p className="mt-3 flex-1 text-sm text-foreground-muted leading-relaxed line-clamp-3">
                     {item.excerpt}
                   </p>
-                  <Link
-                    href={`/news/${item.slug}`}
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-200"
-                  >
-                    Read More
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+
+                  <div className="mt-4 flex items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all duration-200">
+                      Read More
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                    {item.sourceName && (
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-foreground-muted">
+                        <ExternalLink className="h-3 w-3" />
+                        {item.sourceName}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </article>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
