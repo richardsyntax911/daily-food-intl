@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ChevronDown, ShieldCheck, MapPin, Calendar, ArrowRight } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 
 /*
@@ -129,7 +129,7 @@ export function HeroSection() {
                   delay: 0.4,
                   ease: [0.25, 0.1, 0.25, 1],
                 }}
-                className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap md:mt-10"
+                className="mt-6 sm:mt-8 md:mt-10"
               >
                 <Link
                   href="/brands"
@@ -138,57 +138,18 @@ export function HeroSection() {
                   Explore Our Brands
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
-                <Link
-                  href="/about"
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/0 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white hover:bg-white/10 sm:w-auto sm:text-base"
-                >
-                  Our Story
-                </Link>
               </motion.div>
             </motion.div>
           </Container>
         </div>
       </div>
 
-      {/* === Trust strip — full width across the bottom.
-          Mobile: 3 columns of compact icon-only chips (one row).
-          Tablet+: full icon + label + value layout. */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.7 }}
-        className="border-t border-white/15 bg-coral-dark/40 backdrop-blur-sm"
-      >
-        <Container>
-          <div className="grid grid-cols-3 divide-x divide-white/15 py-3 text-white sm:gap-0 md:py-5">
-            <TrustChip
-              icon={<Calendar className="h-4 w-4" />}
-              label="Founded"
-              value="2017 · Accra"
-              fullValue="2017 · Accra, Ghana"
-            />
-            <TrustChip
-              icon={<MapPin className="h-4 w-4" />}
-              label="Footprint"
-              value="15 Markets"
-              fullValue="15 African Markets"
-            />
-            <TrustChip
-              icon={<ShieldCheck className="h-4 w-4" />}
-              label="Certified"
-              value="ISO + FSSC"
-              fullValue="ISO 22000 · FSSC 22000"
-            />
-          </div>
-        </Container>
-      </motion.div>
-
       {/* Scroll hint — bottom-right, desktop only */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-24 right-6 hidden flex-col items-center gap-1.5 text-white/70 lg:flex"
+        className="absolute bottom-8 right-6 hidden flex-col items-center gap-1.5 text-white/70 lg:flex"
       >
         <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
           Scroll
@@ -201,40 +162,5 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
     </section>
-  );
-}
-
-/* Trust-strip cell — icon + label/value pair.
-   Mobile: icon stacks above a short value (centered, vertical layout).
-   Tablet+: horizontal icon + label/value pair.
-   `value` is the short mobile copy; `fullValue` is the longer tablet+ copy. */
-function TrustChip({
-  icon,
-  label,
-  value,
-  fullValue,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  fullValue: string;
-}) {
-  return (
-    <div className="flex flex-col items-center gap-1.5 px-2 text-center sm:flex-row sm:gap-3 sm:px-4 sm:text-left md:px-6">
-      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/15 text-white sm:h-8 sm:w-8">
-        {icon}
-      </span>
-      <div className="flex flex-col leading-tight">
-        <span className="hidden text-[10px] font-bold uppercase tracking-[0.18em] text-white/60 sm:block">
-          {label}
-        </span>
-        <span className="text-[11px] font-semibold text-white sm:hidden">
-          {value}
-        </span>
-        <span className="hidden text-sm font-semibold text-white sm:block">
-          {fullValue}
-        </span>
-      </div>
-    </div>
   );
 }
