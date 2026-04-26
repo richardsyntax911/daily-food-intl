@@ -2,211 +2,195 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ShieldCheck, MapPin, Calendar } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 /*
- * Home hero — Mondelez-inspired editorial layout.
+ * Home hero — full-bleed cinematic style.
  *
- * Left column: copy + CTAs over the coral brand voice background.
- * Right column: layered photo composition built from REAL Daily Food
- * imagery (sourced from press coverage + product catalogue):
- *   1. Production-line shot (scale + quality)
- *   2. Boss Baker pack shot (the brand consumers know)
- *   3. FoodForAll community photo (impact + purpose)
+ * Background: real Daily Food employees photo (1360x765, public/images/hero/
+ * daily-food-employees.webp). Edge-to-edge, no borders, no rotation.
  *
- * On mobile the photo composition stacks above/below the copy depending
- * on viewport — copy first so the headline is always above the fold.
+ * Overlay: coral gradient washing left-to-right at varying opacity so the
+ * left half is dense enough for white text to read, and the right half
+ * lets the photo breathe through. Subtle bottom-to-top dark gradient
+ * keeps the trust strip readable wherever the photo lands.
+ *
+ * Departs from the previous layered/tilted composition — single dominant
+ * photo, all the visual weight of the brand riding on one editorial shot.
  */
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-coral pt-12 pb-16 md:pt-16 md:pb-24 lg:py-20">
-      {/* === Background — gradient + decorative circles === */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-br from-coral-light via-coral to-coral-dark" />
-        <svg
-          className="absolute top-0 right-0 h-[600px] w-[600px] opacity-10"
-          viewBox="0 0 600 600"
-          fill="none"
-        >
-          <circle cx="450" cy="150" r="300" stroke="white" strokeWidth="1.5" />
-          <circle cx="450" cy="150" r="200" stroke="white" strokeWidth="1" />
-          <circle cx="450" cy="150" r="100" stroke="white" strokeWidth="0.5" />
-        </svg>
-        <svg
-          className="absolute bottom-0 left-0 h-[400px] w-[400px] opacity-10"
-          viewBox="0 0 400 400"
-          fill="none"
-        >
-          <path d="M0 400 A400 400 0 0 1 400 0" stroke="white" strokeWidth="1.5" />
-          <path d="M0 300 A300 300 0 0 1 300 0" stroke="white" strokeWidth="1" />
-          <path d="M0 200 A200 200 0 0 1 200 0" stroke="white" strokeWidth="0.5" />
-        </svg>
+    <section className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-coral">
+      {/* === Full-bleed hero photograph === */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/hero/daily-food-employees.webp"
+          alt="The Daily Food team at our Accra production facility"
+          fill
+          sizes="100vw"
+          quality={88}
+          priority
+          className="object-cover"
+        />
       </div>
 
-      <Container className="relative z-10">
-        <div className="grid items-center gap-10 md:gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-          {/* === Left: Copy === */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
+      {/* === Coral wash — dense on the left so text reads, fading right === */}
+      <div
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-coral-dark/95 via-coral/70 to-coral/15"
+        aria-hidden="true"
+      />
+      {/* Soft bottom-to-top fade for the trust strip readability */}
+      <div
+        className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-coral-dark/60 to-transparent"
+        aria-hidden="true"
+      />
+      {/* Subtle vignette at top so the navigation doesn't fight the photo */}
+      <div
+        className="absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b from-coral-dark/40 to-transparent"
+        aria-hidden="true"
+      />
+
+      <Container className="relative z-10 py-20 md:py-24 lg:py-28">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="max-w-2xl"
+        >
+          {/* Eyebrow */}
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="max-w-2xl"
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-[0.18em] text-white backdrop-blur-sm"
           >
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-5 inline-block text-sm font-extrabold uppercase tracking-[0.18em] text-accent"
-            >
-              Be Smart, Eat Smart
-            </motion.span>
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            Be Smart, Eat Smart
+          </motion.span>
 
-            <h1 className="font-heading text-4xl text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-[88px]">
-              Baking an African
-              <br />
-              Champion
-            </h1>
+          {/* Headline */}
+          <h1 className="font-heading text-5xl text-white sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[104px]">
+            Baking an
+            <br />
+            <span className="text-accent">African Champion</span>
+          </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.2,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-              className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg md:mt-8 md:text-xl"
-            >
-              From Ghana to 15 markets across West and Central Africa, Daily
-              Food produces the baked goods, snacks and breads that feed 400
-              million+ consumers — home to Boss Baker and Big Boss.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.4,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-              className="mt-8 flex flex-wrap gap-4 md:mt-10"
-            >
-              <Button variant="white" size="lg" href="/brands">
-                Explore Our Brands
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                href="/about"
-                className="border-white text-white hover:bg-white hover:text-primary"
-              >
-                Learn More
-              </Button>
-            </motion.div>
-
-            {/* Trust strip — small, deck-backed */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/15 pt-6 text-xs uppercase tracking-widest text-white/70 md:mt-14"
-            >
-              <span>Founded 2017</span>
-              <span className="hidden h-1 w-1 rounded-full bg-white/40 sm:block" />
-              <span>15 African markets</span>
-              <span className="hidden h-1 w-1 rounded-full bg-white/40 sm:block" />
-              <span>ISO 22000 · FSSC 22000</span>
-            </motion.div>
-          </motion.div>
-
-          {/* === Right: Layered photo composition === */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 1,
-              delay: 0.3,
+              duration: 0.8,
+              delay: 0.2,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="relative mx-auto h-[420px] w-full max-w-[480px] sm:h-[500px] lg:h-[560px] lg:max-w-none"
-            aria-hidden="true"
+            className="mt-6 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg md:mt-8 md:text-xl"
           >
-            {/* Main photo — production line, the largest tile, slight tilt */}
-            <div className="absolute right-0 top-0 h-[78%] w-[88%] -rotate-[2deg] overflow-hidden rounded-3xl border-4 border-white shadow-2xl">
-              <Image
-                src="/images/news/daily-food-production-line.jpg"
-                alt="Cupcakes on Daily Food's production line in Accra"
-                fill
-                sizes="(min-width: 1024px) 480px, (min-width: 640px) 400px, 90vw"
-                className="object-cover"
-                priority
-              />
-              {/* Brand tag pinned to the photo */}
-              <div className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-foreground shadow-md backdrop-blur-sm">
-                Accra · Production
-              </div>
-            </div>
+            From Ghana to 15 markets across West and Central Africa, Daily
+            Food produces the baked goods, snacks and breads that feed 400
+            million+ consumers — home to{" "}
+            <span className="font-semibold text-white">Boss Baker</span> and{" "}
+            <span className="font-semibold text-white">Big Boss</span>.
+          </motion.p>
 
-            {/* Floating product pack shot — top-right accent on yellow sunburst */}
-            <div className="absolute right-[-12px] top-[-8px] h-[36%] w-[42%] rotate-[5deg] overflow-hidden rounded-2xl border-4 border-white shadow-xl sm:right-[-24px] sm:top-[-16px]">
-              <div className="relative h-full w-full bg-gradient-to-br from-[#F4C82E] via-[#F0B020] to-[#E89A0E]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.35)_0%,_transparent_60%)]" />
-                <div className="relative flex h-full items-center justify-center p-3">
-                  <div className="relative h-full w-full">
-                    <Image
-                      src="/products/boss-baker-fruit-cake.png"
-                      alt="Boss Baker Fruit Cake pack shot"
-                      fill
-                      sizes="(min-width: 1024px) 200px, (min-width: 640px) 170px, 38vw"
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Community photo — bottom-left small accent */}
-            <div className="absolute bottom-0 left-0 h-[40%] w-[48%] rotate-[3deg] overflow-hidden rounded-2xl border-4 border-white shadow-xl">
-              <Image
-                src="/images/news/foodforall-pastry-day-2.jpg"
-                alt="Daily Food's FoodForAll partnership — National Pastry Day in Accra"
-                fill
-                sizes="(min-width: 1024px) 240px, (min-width: 640px) 200px, 45vw"
-                className="object-cover"
-              />
-              {/* Tag */}
-              <div className="absolute bottom-2 left-2 rounded-full bg-white/95 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-foreground shadow-md backdrop-blur-sm">
-                Community
-              </div>
-            </div>
-
-            {/* Decorative confetti dots */}
-            <div className="pointer-events-none absolute -bottom-6 -right-6 h-24 w-24 rounded-full bg-accent/40 blur-2xl" aria-hidden="true" />
-            <div className="pointer-events-none absolute -top-10 -left-6 h-20 w-20 rounded-full bg-secondary/40 blur-2xl" aria-hidden="true" />
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.4,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
+            className="mt-8 flex flex-wrap gap-4 md:mt-10"
+          >
+            <Button variant="white" size="lg" href="/brands">
+              Explore Our Brands
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              href="/about"
+              className="border-white/60 bg-white/0 text-white hover:bg-white hover:text-primary"
+            >
+              Our Story
+            </Button>
           </motion.div>
-        </div>
+        </motion.div>
       </Container>
 
-      {/* Scroll down indicator */}
+      {/* === Trust strip — three deck-backed credentials, fixed at bottom === */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.7 }}
+        className="absolute inset-x-0 bottom-0 z-10 border-t border-white/15 backdrop-blur-sm"
+      >
+        <Container>
+          <div className="grid grid-cols-1 gap-3 py-4 text-white sm:grid-cols-3 sm:divide-x sm:divide-white/15 md:py-5">
+            <TrustChip
+              icon={<Calendar className="h-4 w-4" />}
+              label="Founded"
+              value="2017 · Accra, Ghana"
+            />
+            <TrustChip
+              icon={<MapPin className="h-4 w-4" />}
+              label="Footprint"
+              value="15 African Markets"
+            />
+            <TrustChip
+              icon={<ShieldCheck className="h-4 w-4" />}
+              label="Certified"
+              value="ISO 22000 · FSSC 22000"
+            />
+          </div>
+        </Container>
+      </motion.div>
+
+      {/* Scroll-down indicator — small + restrained at desktop only */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
+        className="absolute bottom-24 right-6 z-10 hidden flex-col items-center gap-1.5 text-white/70 lg:flex"
       >
-        <span className="text-xs uppercase tracking-widest text-white/60">
-          Scroll Down
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
+          Scroll
         </span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown className="h-5 w-5 text-white/60" />
+          <ChevronDown className="h-4 w-4" />
         </motion.div>
       </motion.div>
     </section>
+  );
+}
+
+/* Compact trust-strip cell — icon + label/value pair */
+function TrustChip({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex items-center gap-3 sm:px-4 md:px-6">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
+        {icon}
+      </span>
+      <div className="flex flex-col leading-tight">
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/60">
+          {label}
+        </span>
+        <span className="text-sm font-semibold text-white">{value}</span>
+      </div>
+    </div>
   );
 }
