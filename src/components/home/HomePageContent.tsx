@@ -7,7 +7,6 @@ import { AboutPreview } from "./AboutPreview";
 import { ContentZigzag } from "./ContentZigzag";
 import { StatsCounter } from "./StatsCounter";
 import { NewsHighlights } from "./NewsHighlights";
-import { SustainabilityPreview } from "./SustainabilityPreview";
 
 export function HomePageContent() {
   return (
@@ -19,7 +18,6 @@ export function HomePageContent() {
       <ContentZigzag />
       <StatsCounter />
       <NewsHighlights />
-      <SustainabilityPreview />
     </main>
   );
 }
