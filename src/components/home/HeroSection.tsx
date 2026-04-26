@@ -116,7 +116,7 @@ export function HeroSection() {
               >
                 <Link
                   href="/brands"
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-coral-dark shadow-sm transition-colors hover:bg-white/95 sm:w-auto sm:text-[15px]"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-coral-dark shadow-sm transition-colors hover:bg-white/95 sm:text-[15px]"
                 >
                   Explore Our Brands
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
