@@ -49,6 +49,8 @@ const contentBlocks: ContentBlock[] = [
       "Our impact extends far beyond our products. From 30 employees in 2018 to 200+ today — with 60+ upskilled through high-skill training — we are committed to building careers, developing talent and investing in the communities that host our Ghana operations. Through our chairship of the Food For All Africa Advisory Board, our work also reaches 10,000+ people fed every month.",
     linkText: "Community impact",
     linkHref: "/about#community",
+    imageUrl: "/images/sustainability/growing-together.webp",
+    imageAlt: "Daily Food's community impact through the Food For All Africa partnership",
     gradientFrom: "from-secondary",
     gradientTo: "to-accent",
     placeholderLabel: "Community Programs",
