@@ -23,8 +23,11 @@ export function PartnersStrip() {
 
   return (
     <section className="border-b border-border bg-white py-10 md:py-14 overflow-hidden">
-      <p className="mb-8 text-center text-xs font-extrabold uppercase tracking-[0.18em] text-foreground-muted md:text-sm">
-        Trusted by category leaders and world-class partners
+      <p className="mb-8 text-center text-xs font-extrabold uppercase leading-relaxed tracking-[0.18em] text-foreground-muted md:text-sm">
+        {/* On mobile each clause sits on its own centered line.
+            On sm+ they collapse back into a single line. */}
+        <span className="block sm:inline">Trusted by category leaders </span>
+        <span className="block sm:inline">and world-class partners</span>
       </p>
 
       <div className="relative">

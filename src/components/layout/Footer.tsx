@@ -90,13 +90,15 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-3 lg:grid-cols-5">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <Image
-              src="/logos/daily-food-international-logo.jpg"
-              alt={SITE_NAME}
-              width={746}
-              height={340}
-              className="mb-4 h-12 w-auto"
-            />
+            <Link href="/" aria-label={`${SITE_NAME} home`} className="inline-block">
+              <Image
+                src="/logos/daily-food-international-logo.jpg"
+                alt={SITE_NAME}
+                width={746}
+                height={340}
+                className="mb-4 h-12 w-auto"
+              />
+            </Link>
             <p className="mb-6 text-sm leading-relaxed">
               Be Smart, Eat Smart. Baking an African champion from Ghana to 15
               markets since 2017.
