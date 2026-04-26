@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
@@ -10,6 +11,10 @@ interface ContentBlock {
   paragraph: string;
   linkText: string;
   linkHref: string;
+  /* When imageUrl is set, the real photo renders. Otherwise the
+     gradient placeholder fills in until a real image is supplied. */
+  imageUrl?: string;
+  imageAlt?: string;
   gradientFrom: string;
   gradientTo: string;
   placeholderLabel: string;
@@ -22,6 +27,8 @@ const contentBlocks: ContentBlock[] = [
       "Every product that leaves our facilities meets the highest standards of food safety and quality. Our state-of-the-art laboratories and rigorous testing protocols ensure that from raw ingredients to finished goods, nothing is left to chance. We are certified to international food safety standards and continuously invest in quality assurance.",
     linkText: "Our quality standards",
     linkHref: "/about#quality",
+    imageUrl: "/images/hero/boss-baker-cupcake.jpg",
+    imageAlt: "Boss Baker cupcakes — Daily Food's flagship product",
     gradientFrom: "from-primary",
     gradientTo: "to-primary-dark",
     placeholderLabel: "Quality Testing Lab",
@@ -63,27 +70,43 @@ export function ContentZigzag() {
                   isReversed ? "lg:direction-rtl" : ""
                 }`}
               >
-                {/* Image placeholder */}
+                {/* Image — real photo if imageUrl set, gradient
+                    placeholder otherwise */}
                 <ScrollReveal
                   direction={isReversed ? "right" : "left"}
                   delay={0.1}
                   className={isReversed ? "lg:order-2" : ""}
                 >
                   <div
-                    className={`aspect-[4/3] rounded-2xl bg-gradient-to-br ${block.gradientFrom} ${block.gradientTo} overflow-hidden relative`}
+                    className={`relative aspect-[4/3] overflow-hidden rounded-2xl ${
+                      block.imageUrl
+                        ? "bg-gradient-to-br from-primary/10 to-accent/10"
+                        : `bg-gradient-to-br ${block.gradientFrom} ${block.gradientTo}`
+                    }`}
                   >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white/30">
-                        <div className="w-16 h-16 mx-auto mb-3 rounded-full border-2 border-white/20 flex items-center justify-center">
-                          <span className="text-2xl font-heading">
-                            {index + 1}
-                          </span>
-                        </div>
-                        <div className="text-sm tracking-widest uppercase">
-                          {block.placeholderLabel}
+                    {block.imageUrl ? (
+                      <Image
+                        src={block.imageUrl}
+                        alt={block.imageAlt ?? block.heading}
+                        fill
+                        sizes="(min-width: 1024px) 480px, 100vw"
+                        quality={88}
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center text-white/30">
+                          <div className="w-16 h-16 mx-auto mb-3 rounded-full border-2 border-white/20 flex items-center justify-center">
+                            <span className="text-2xl font-heading">
+                              {index + 1}
+                            </span>
+                          </div>
+                          <div className="text-sm tracking-widest uppercase">
+                            {block.placeholderLabel}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </ScrollReveal>
 
