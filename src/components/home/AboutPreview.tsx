@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -9,31 +10,19 @@ export function AboutPreview() {
     <section className="py-14 md:py-20">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Image placeholder */}
+          {/* Left: Real factory-employee photo (sourced from
+              howwemadeitinafrica.com press coverage) */}
           <ScrollReveal direction="left">
             <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary via-primary-light to-accent overflow-hidden">
-                {/* Decorative pattern overlay */}
-                <div className="absolute inset-0 opacity-20">
-                  <svg
-                    className="w-full h-full"
-                    viewBox="0 0 400 300"
-                    fill="none"
-                  >
-                    <circle cx="200" cy="150" r="120" stroke="white" strokeWidth="0.5" />
-                    <circle cx="200" cy="150" r="80" stroke="white" strokeWidth="0.5" />
-                    <rect x="80" y="50" width="240" height="200" rx="8" stroke="white" strokeWidth="0.5" />
-                  </svg>
-                </div>
-                {/* Content overlay for visual interest */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white/40">
-                    <div className="text-6xl font-heading">DFLI</div>
-                    <div className="text-sm tracking-widest uppercase mt-2">
-                      Production Facility
-                    </div>
-                  </div>
-                </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10">
+                <Image
+                  src="/images/news/daily-food-factory-employee.jpg"
+                  alt="A Daily Food employee at the Accra production facility"
+                  fill
+                  sizes="(min-width: 1024px) 480px, 100vw"
+                  quality={90}
+                  className="object-cover"
+                />
               </div>
 
               {/* Floating stats badge — sits inside the card on mobile,
@@ -52,28 +41,30 @@ export function AboutPreview() {
           {/* Right: Text content */}
           <ScrollReveal direction="right">
             <div>
-              <span className="mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-coral">
+              <span className="mb-3 inline-block text-sm font-extrabold uppercase tracking-[0.18em] text-coral">
                 Who We Are
               </span>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-foreground">
-                Africa&apos;s Leading
+                Baking an African
                 <br />
-                Food Company
+                Champion from Ghana
               </h2>
 
               <p className="mt-6 text-foreground-muted leading-relaxed">
                 Daily Food Limited International is one of West Africa&apos;s
-                fastest-growing food manufacturing companies. Founded in 2008, we
-                have built a portfolio of trusted brands that serve millions of
-                consumers with quality, affordable, and nutritious food products.
+                fastest-growing food manufacturers. Founded in Ghana in 2017
+                by Geoffrey Fadoul and Jean-Paul Nassar, we&apos;ve grown
+                from 30 employees to 200+ today, supplying 15 markets across
+                West and Central Africa with cakes, biscuits, cookies and
+                burger buns.
               </p>
 
               <p className="mt-4 text-foreground-muted leading-relaxed">
-                From our state-of-the-art production facilities, we produce a
-                wide range of baked goods, cereals, snacks, beverages, and ready
-                meals. Our commitment to quality, innovation, and sustainability
-                drives everything we do as we work toward our vision of becoming
-                Africa&apos;s most loved food company.
+                From our ISO 22000 and FSSC 22000 certified facility in
+                Accra, we produce the Boss Baker and Big Boss brands —
+                certified suppliers to Burger King and KFC across the
+                continent. Reached operational breakeven in October 2022,
+                entirely on founder equity with zero debt.
               </p>
 
               <div className="mt-8">
