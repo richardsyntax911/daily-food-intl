@@ -36,19 +36,28 @@ export function HeroSection() {
         />
       </div>
 
-      {/* === Coral wash — dense on the left so text reads, fading right === */}
+      {/* === Overlay stack — guaranteed text legibility ===
+           1. Heavy dark linear gradient: dense black fading right.
+              Coral on coral has no contrast, so we use neutral darks.
+           2. Subtle coral colour cast on the rest so the brand voice
+              still shows through where the photo is visible.
+           3. Top + bottom vignettes so nav and trust strip read clean. */}
       <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-coral-dark/95 via-coral/70 to-coral/15"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/75 via-black/45 to-black/10"
         aria-hidden="true"
       />
-      {/* Soft bottom-to-top fade for the trust strip readability */}
       <div
-        className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-coral-dark/60 to-transparent"
+        className="absolute inset-0 -z-10 bg-gradient-to-br from-coral-dark/30 via-transparent to-coral/15 mix-blend-multiply"
         aria-hidden="true"
       />
-      {/* Subtle vignette at top so the navigation doesn't fight the photo */}
+      {/* Bottom-to-top fade for the trust strip readability */}
       <div
-        className="absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b from-coral-dark/40 to-transparent"
+        className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-black/70 to-transparent"
+        aria-hidden="true"
+      />
+      {/* Top vignette so the navigation doesn't fight the photo */}
+      <div
+        className="absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b from-black/40 to-transparent"
         aria-hidden="true"
       />
 
@@ -70,11 +79,17 @@ export function HeroSection() {
             Be Smart, Eat Smart
           </motion.span>
 
-          {/* Headline */}
-          <h1 className="font-heading text-5xl text-white sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[104px]">
+          {/* Headline — all white (yellow accent dropped because the photo
+              has yellow Boss Baker vests that clashed with it). Strong
+              drop shadow guarantees legibility against any frame in the
+              photo behind. */}
+          <h1
+            className="font-heading text-5xl text-white sm:text-6xl md:text-7xl lg:text-[88px] xl:text-[104px]"
+            style={{ textShadow: "0 2px 24px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4)" }}
+          >
             Baking an
             <br />
-            <span className="text-accent">African Champion</span>
+            African Champion
           </h1>
 
           {/* Subtitle */}
@@ -86,7 +101,8 @@ export function HeroSection() {
               delay: 0.2,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg md:mt-8 md:text-xl"
+            className="mt-6 max-w-xl text-base leading-relaxed text-white/95 sm:text-lg md:mt-8 md:text-xl"
+            style={{ textShadow: "0 1px 12px rgba(0,0,0,0.4)" }}
           >
             From Ghana to 15 markets across West and Central Africa, Daily
             Food produces the baked goods, snacks and breads that feed 400
