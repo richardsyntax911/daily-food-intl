@@ -39,6 +39,8 @@ const contentBlocks: ContentBlock[] = [
       "We believe great food starts at the source. That is why we partner directly with local farming communities, supporting sustainable agricultural practices and fair trade. By sourcing our raw materials responsibly, we ensure the finest ingredients while empowering the farmers and communities that grow them.",
     linkText: "Our sourcing practices",
     linkHref: "/sustainability#sourcing",
+    imageUrl: "/images/sustainability/farm-plants.jpg",
+    imageAlt: "Local farm plants — Daily Food's sustainable sourcing roots",
     gradientFrom: "from-green-700",
     gradientTo: "to-green-500",
     placeholderLabel: "Local Farming Partners",

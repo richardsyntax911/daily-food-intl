@@ -111,8 +111,9 @@ export function AboutPageContent() {
                   observation: West Africa&apos;s baked goods market was 70%
                   import-dominated — good quality at a high price, while local
                   production was low price and low quality. That gap was the
-                  opportunity for a world-class local producer to serve 400
-                  million+ consumers across the region through ECOWAS.
+                  opportunity for a world-class local producer to reach 230
+                  million+ urban consumers across our 15 ECOWAS and Central
+                  African markets.
                 </p>
                 <p className="mt-4 text-foreground-muted leading-relaxed">
                   The business was forged in steel. An early pivot from beef

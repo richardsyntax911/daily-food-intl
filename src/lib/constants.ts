@@ -21,7 +21,7 @@ export const COMPANY = {
     employees: "200+",
     countries: "15",
     brands: "2",
-    consumerReach: "400M+",
+    consumerReach: "230M+",
   },
   financials: {
     // Per Nov 2022 management presentation to Sahel Capital.

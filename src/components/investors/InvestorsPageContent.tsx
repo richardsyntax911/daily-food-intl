@@ -34,9 +34,9 @@ const investmentThesis = [
   },
   {
     label: "Consumer Reach",
-    value: "400M+",
+    value: "230M+",
     icon: Users,
-    note: "ECOWAS + Central Africa",
+    note: "Urban consumers, 15 markets",
   },
   {
     label: "Breakeven",

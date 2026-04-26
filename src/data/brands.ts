@@ -202,7 +202,7 @@ export const brands: Brand[] = [
     description:
       "Our flagship brand in Ghana and Francophone West & Central Africa — cakes, biscuits, cookies and burger buns produced to world-class standards from Ghana.",
     longDescription:
-      "Boss Baker launched alongside Daily Food in 2017 and became the category leader in West Africa's baked goods market after the 2019 pivot to cakes. Certified to ISO 22000 and FSSC 22000, Boss Baker supplies Burger King and KFC across the continent and reaches 400 million+ consumers through 15 markets. The brand is sold in English across Ghana and in French across the Francophone West & Central Africa region.",
+      "Boss Baker launched alongside Daily Food in 2017 and became the category leader in West Africa's baked goods market after the 2019 pivot to cakes. Certified to ISO 22000 and FSSC 22000, Boss Baker supplies Burger King and KFC across the continent and reaches 230 million+ urban consumers through 15 markets. The brand is sold in English across Ghana and in French across the Francophone West & Central Africa region.",
     logoUrl: "/logos/boss-baker-logo.svg",
     heroImageUrl: "/images/brands/boss-baker-hero.jpg",
     primaryColor: "#791619",

@@ -112,9 +112,9 @@ export function HeroSection() {
                 className="mt-5 max-w-lg text-sm leading-relaxed text-white/90 sm:mt-6 sm:text-base md:mt-8 md:text-xl"
               >
                 From Ghana to 15 markets across West and Central Africa, Daily
-                Food produces the baked goods, snacks and breads that feed{" "}
-                <span className="font-semibold text-white">400 million+</span>{" "}
-                consumers — home to{" "}
+                Food produces the baked goods, snacks and breads that reach{" "}
+                <span className="font-semibold text-white">230 million+</span>{" "}
+                urban consumers — home to{" "}
                 <span className="font-semibold text-white">Boss Baker</span>{" "}
                 and{" "}
                 <span className="font-semibold text-white">Big Boss</span>.
