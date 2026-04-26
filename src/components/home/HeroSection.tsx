@@ -133,14 +133,14 @@ export function HeroSection() {
               >
                 <Link
                   href="/brands"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-coral-dark shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg sm:text-base"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-coral-dark shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg sm:w-auto sm:text-base"
                 >
                   Explore Our Brands
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href="/about"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/0 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white hover:bg-white/10 sm:text-base"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/0 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white hover:bg-white/10 sm:w-auto sm:text-base"
                 >
                   Our Story
                 </Link>
