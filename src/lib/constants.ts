@@ -31,10 +31,8 @@ export const COMPANY = {
     marketSize: "$3.2B (cakes & biscuits, West Africa)",
   },
   socialLinks: {
-    // TODO: confirm actual handles; placeholders retained.
-    linkedin: "https://linkedin.com/company/daily-food-intl",
-    facebook: "https://facebook.com/bossbakerghana",
-    instagram: "https://instagram.com/bigboss.nigeria",
+    linkedin: "https://www.linkedin.com/company/dailyfood/",
+    instagram: "https://www.instagram.com/bossbakerghana",
   },
   contact: {
     // TODO: confirm actual numbers/emails with client.
