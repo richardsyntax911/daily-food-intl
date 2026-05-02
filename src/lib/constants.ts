@@ -3,7 +3,7 @@ export const SITE_SHORT_NAME = "Daily Food";
 export const SITE_TAGLINE = "Be Smart, Eat Smart";
 export const SITE_DESCRIPTION =
   "West African food manufacturer. Home to Boss Baker and Big Boss — baking an African champion from Ghana to 15 markets across the continent.";
-export const SITE_URL = "https://www.dailyfoodinternational.com";
+export const SITE_URL = "https://dailyfoodinternational.com";
 
 export const COMPANY = {
   name: "Daily Food Limited International",
