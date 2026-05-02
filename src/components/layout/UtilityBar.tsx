@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ShieldCheck, Linkedin, Instagram } from "lucide-react";
+import { ShieldCheck, Linkedin, Facebook, Instagram } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 
 export function UtilityBar() {
@@ -38,6 +38,9 @@ export function UtilityBar() {
           <div className="flex items-center gap-3">
             <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white" aria-label="LinkedIn">
               <Linkedin className="h-3.5 w-3.5" />
+            </a>
+            <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white" aria-label="Facebook">
+              <Facebook className="h-3.5 w-3.5" />
             </a>
             <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white" aria-label="Instagram">
               <Instagram className="h-3.5 w-3.5" />

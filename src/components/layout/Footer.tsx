@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Linkedin,
+  Facebook,
   Instagram,
   Mail,
   Phone,
@@ -65,6 +66,7 @@ const legalLinks = [
 
 const socialIcons = [
   { icon: Linkedin, href: COMPANY.socialLinks.linkedin, label: "LinkedIn" },
+  { icon: Facebook, href: COMPANY.socialLinks.facebook, label: "Facebook" },
   { icon: Instagram, href: COMPANY.socialLinks.instagram, label: "Instagram" },
 ];
 

@@ -32,6 +32,7 @@ export const COMPANY = {
   },
   socialLinks: {
     linkedin: "https://www.linkedin.com/company/dailyfood/",
+    facebook: "https://www.facebook.com/BossBakerGhana/",
     instagram: "https://www.instagram.com/bossbakerghana",
   },
   contact: {
