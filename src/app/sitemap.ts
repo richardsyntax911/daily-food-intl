@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { brands } from "@/data/brands";
 import { newsArticles } from "@/data/news";
-
-const SITE_URL = "https://www.dailyfoodintl.com";
+import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [

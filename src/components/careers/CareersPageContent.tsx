@@ -140,7 +140,7 @@ function JobCard({ job }: { job: JobListing }) {
 
       <div className="mt-6">
         <Button
-          href={`mailto:careers@dailyfoodintl.com?subject=Application: ${job.title}`}
+          href={`mailto:careers@dailyfoodinternational.com?subject=Application: ${job.title}`}
           size="sm"
         >
           Apply Now
@@ -248,7 +248,7 @@ export function CareersPageContent() {
                 subtitle="We're always looking for talented individuals. Submit a general application and we'll keep your profile on file."
               />
               <Button
-                href="mailto:careers@dailyfoodintl.com?subject=General Application"
+                href="mailto:careers@dailyfoodinternational.com?subject=General Application"
                 size="lg"
               >
                 General Application
