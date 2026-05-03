@@ -7,6 +7,7 @@ import {
   Lightbulb,
   Leaf,
   HeartHandshake,
+  Linkedin,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -17,6 +18,7 @@ import {
   leadership,
   missionVisionValues,
   partners,
+  hasTeamPhoto,
 } from "@/data/company";
 
 /* ------------------------------------------------------------------ */
@@ -305,30 +307,68 @@ export function AboutPageContent() {
             <SectionHeading
               eyebrow="Meet the Team"
               title="Our Leadership"
-              subtitle="Experienced professionals driving Daily Food's growth across Africa and beyond."
+              subtitle="The two co-founders who built Daily Food from a Ghana startup to an African champion."
             />
           </ScrollReveal>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {leadership.map((leader, index) => (
-              <ScrollReveal key={leader.name} delay={index * 0.1}>
-                <div className="rounded-2xl border border-border bg-white p-6 text-center transition-shadow hover:shadow-lg">
-                  {/* Avatar placeholder */}
-                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-2xl font-bold text-white">
-                    {getInitials(leader.name)}
+          <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
+            {leadership.map((leader, index) => {
+              const showPhoto = !!leader.imageUrl && hasTeamPhoto(leader.slug);
+              return (
+                <ScrollReveal key={leader.slug} delay={index * 0.1}>
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-white p-6 transition-all hover:-translate-y-0.5 hover:shadow-xl md:p-8">
+                    {/* Header: avatar + name/title */}
+                    <div className="flex items-start gap-5">
+                      {/* Avatar — real photo if file exists, gradient initials otherwise */}
+                      {showPhoto ? (
+                        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/15 md:h-24 md:w-24">
+                          <Image
+                            src={leader.imageUrl!}
+                            alt={`${leader.name} portrait`}
+                            fill
+                            sizes="96px"
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-2xl font-extrabold text-white ring-2 ring-primary/15 md:h-24 md:w-24"
+                          aria-hidden="true"
+                        >
+                          {getInitials(leader.name)}
+                        </div>
+                      )}
+
+                      <div className="min-w-0 flex-1 pt-1">
+                        <h3 className="font-heading text-xl text-foreground md:text-2xl">
+                          {leader.name}
+                        </h3>
+                        <p className="mt-1 text-sm font-semibold text-primary">
+                          {leader.title}
+                        </p>
+                        {leader.linkedinUrl && (
+                          <a
+                            href={leader.linkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-foreground-muted transition-colors hover:text-primary"
+                            aria-label={`${leader.name} on LinkedIn`}
+                          >
+                            <Linkedin className="h-3.5 w-3.5" />
+                            View on LinkedIn
+                          </a>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Bio */}
+                    <p className="mt-5 text-sm leading-relaxed text-foreground-muted md:mt-6">
+                      {leader.bio}
+                    </p>
                   </div>
-                  <h3 className="font-heading text-xl text-foreground">
-                    {leader.name}
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-primary">
-                    {leader.title}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground-muted">
-                    {leader.bio}
-                  </p>
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </Container>
       </section>

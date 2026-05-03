@@ -46,21 +46,49 @@ export const timeline = [
 
 /*
  * Leadership
- * The Nov 2022 deck names Geoffrey Fadoul and Jean-Paul Nassar as the presenters.
- * Titles here are best-inference; confirm with client.
+ *
+ * Two co-founders confirmed across the Nov 2022 deck cover and the
+ * 2022 How-We-Made-It-In-Africa interview. LinkedIn URLs sourced
+ * directly from the founders.
+ *
+ * Photo handling: drop a JPG at /public/images/team/{slug}.jpg and
+ * add the slug to AVAILABLE_TEAM_PHOTOS below. The card automatically
+ * switches from the gradient + initials fallback to the real photo.
+ * No broken-image icons either way.
  */
-export const leadership = [
+export const AVAILABLE_TEAM_PHOTOS = new Set<string>([
+  // Add a slug here when the matching JPG is in /public/images/team/
+  // e.g. "geoffrey-fadoul",
+]);
+
+export function hasTeamPhoto(slug: string): boolean {
+  return AVAILABLE_TEAM_PHOTOS.has(slug);
+}
+export interface Leader {
+  slug: string;
+  name: string;
+  title: string;
+  imageUrl?: string;
+  linkedinUrl?: string;
+  bio: string;
+}
+
+export const leadership: Leader[] = [
   {
+    slug: "geoffrey-fadoul",
     name: "Geoffrey Fadoul",
-    title: "Co-Founder",
+    title: "Co-Founder & CEO",
     imageUrl: "/images/team/geoffrey-fadoul.jpg",
-    bio: "Co-founded Daily Food in Ghana in 2017 with a thesis that West Africa's baked goods market — 70% import-dominated — was wide open for a world-class local producer. Led the pivot to cakes in 2019 and the geographic expansion that followed.",
+    linkedinUrl: "https://www.linkedin.com/in/geoffreyfadoul/",
+    bio: "Born to a Lebanese family with three generations of business across Mali, Côte d'Ivoire, Burkina Faso and Guinea, Geoffrey co-founded Daily Food in Ghana in 2017 after his MBA in Scotland. His thesis: West Africa's baked goods market — 70% import-dominated — was wide open for a world-class local producer. Geoffrey led the 2019 pivot to cakes, the $5M production-line investment that scaled it, and the expansion to 15 markets across West and Central Africa. He also chairs the Advisory Board of Food For All Africa.",
   },
   {
+    slug: "jean-paul-nassar",
     name: "Jean-Paul Nassar",
     title: "Co-Founder",
     imageUrl: "/images/team/jean-paul-nassar.jpg",
-    bio: "Co-founded Daily Food in 2017. Architect of the operations and capital discipline that took the company from startup to breakeven in October 2022 — financed entirely by founder equity, with zero debt.",
+    linkedinUrl: "https://www.linkedin.com/in/jean-paul-nassar-49544258/",
+    bio: "Co-founded Daily Food in 2017. Architect of the operations and capital discipline that took the company from startup to operational breakeven in October 2022 — financed entirely by founder shareholder equity, with zero external debt on the balance sheet through wheat, sugar and Cedi shocks.",
   },
   // TODO: expanded leadership team (Sales, Operations, Marketing, HR, Finance)
   // to be added once we have names, titles and bios from the client.
