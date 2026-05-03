@@ -138,7 +138,6 @@ export interface Brand {
   description: string;
   longDescription: string;
   logoUrl: string;
-  heroImageUrl: string;
   primaryColor: string;
   secondaryColor: string;
   category: string;
@@ -204,7 +203,6 @@ export const brands: Brand[] = [
     longDescription:
       "Boss Baker launched alongside Daily Food in 2017 and became the category leader in West Africa's baked goods market after the 2019 pivot to cakes. Certified to ISO 22000 and FSSC 22000, Boss Baker supplies Burger King and KFC across the continent and reaches 230 million+ urban consumers through 15 markets. The brand is sold in English across Ghana and in French across the Francophone West & Central Africa region.",
     logoUrl: "/logos/boss-baker-logo.svg",
-    heroImageUrl: "/images/brands/boss-baker-hero.jpg",
     primaryColor: "#791619",
     secondaryColor: "#F9B233",
     category: "Baked Goods & Snacks",
@@ -223,7 +221,6 @@ export const brands: Brand[] = [
     longDescription:
       "Big Boss is Daily Food's Nigerian market brand, NAFDAC-approved and carrying the full Daily Food product line — from Fruit Cake and Chocolate Cake to Milk Biscuits and Burger Buns. Same ISO 22000 and FSSC 22000 certified facilities as Boss Baker, same recipes, same quality — adapted to resonate with the Nigerian consumer.",
     logoUrl: "/logos/big-boss-logo.svg",
-    heroImageUrl: "/images/brands/big-boss-hero.jpg",
     primaryColor: "#791619",
     secondaryColor: "#F9B233",
     category: "Baked Goods & Snacks",

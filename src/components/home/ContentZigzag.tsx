@@ -26,7 +26,7 @@ const contentBlocks: ContentBlock[] = [
     paragraph:
       "Every product that leaves our facilities meets the highest standards of food safety and quality. Our state-of-the-art laboratories and rigorous testing protocols ensure that from raw ingredients to finished goods, nothing is left to chance. We are certified to international food safety standards and continuously invest in quality assurance.",
     linkText: "Our quality standards",
-    linkHref: "/about#quality",
+    linkHref: "/sustainability#governance",
     imageUrl: "/images/hero/boss-baker-cupcake.jpg",
     imageAlt: "Boss Baker cupcakes — Daily Food's flagship product",
     gradientFrom: "from-primary",
@@ -38,7 +38,7 @@ const contentBlocks: ContentBlock[] = [
     paragraph:
       "We believe great food starts at the source. That is why we partner directly with local farming communities, supporting sustainable agricultural practices and fair trade. By sourcing our raw materials responsibly, we ensure the finest ingredients while empowering the farmers and communities that grow them.",
     linkText: "Our sourcing practices",
-    linkHref: "/sustainability#sourcing",
+    linkHref: "/sustainability#prosperity",
     imageUrl: "/images/sustainability/farm-plants.jpg",
     imageAlt: "Local farm plants — Daily Food's sustainable sourcing roots",
     gradientFrom: "from-green-700",
@@ -50,7 +50,7 @@ const contentBlocks: ContentBlock[] = [
     paragraph:
       "Our impact extends far beyond our products. From 30 employees in 2018 to 200+ today — with 60+ upskilled through high-skill training — we are committed to building careers, developing talent and investing in the communities that host our Ghana operations. Through our chairship of the Food For All Africa Advisory Board, our work also reaches 10,000+ people fed every month.",
     linkText: "Community impact",
-    linkHref: "/about#community",
+    linkHref: "/sustainability#community",
     imageUrl: "/images/sustainability/growing-together.webp",
     imageAlt: "Daily Food's community impact through the Food For All Africa partnership",
     gradientFrom: "from-secondary",
