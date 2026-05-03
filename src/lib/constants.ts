@@ -36,8 +36,7 @@ export const COMPANY = {
     instagram: "https://www.instagram.com/bossbakerghana",
   },
   contact: {
-    // TODO: confirm actual numbers/emails with client.
-    phone: "+233 30 222 7890",
+    phone: "+233 55 715 1501",
     email: "info@dailyfoodinternational.com",
     investorEmail: "investors@dailyfoodinternational.com",
     mediaEmail: "media@dailyfoodinternational.com",

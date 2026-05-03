@@ -213,50 +213,83 @@ export function CareersPageContent() {
       </section>
 
       {/* ============================================================ */}
-      {/*  JOB LISTINGS                                                 */}
+      {/*  JOB LISTINGS  /  NO-OPENINGS EMPTY STATE                     */}
       {/* ============================================================ */}
-      <section className="bg-surface py-20 md:py-28">
-        <Container>
-          <ScrollReveal>
-            <SectionHeading
-              eyebrow="Open Positions"
-              title="Current Opportunities"
-              subtitle={`We have ${jobListings.length} open ${jobListings.length === 1 ? "position" : "positions"} at our Accra, Ghana headquarters.`}
-            />
-          </ScrollReveal>
-
-          <div className="mx-auto max-w-4xl space-y-6">
-            {jobListings.map((job, index) => (
-              <ScrollReveal key={job.id} delay={index * 0.08}>
-                <JobCard job={job} />
+      {jobListings.length > 0 ? (
+        <>
+          <section className="bg-surface py-20 md:py-28">
+            <Container>
+              <ScrollReveal>
+                <SectionHeading
+                  eyebrow="Open Positions"
+                  title="Current Opportunities"
+                  subtitle={`We have ${jobListings.length} open ${jobListings.length === 1 ? "position" : "positions"} at our Accra, Ghana headquarters.`}
+                />
               </ScrollReveal>
-            ))}
-          </div>
-        </Container>
-      </section>
 
-      {/* ============================================================ */}
-      {/*  GENERAL APPLICATION CTA                                      */}
-      {/* ============================================================ */}
-      <section className="py-20 md:py-28">
-        <Container>
-          <ScrollReveal>
-            <div className="mx-auto max-w-2xl text-center">
-              <SectionHeading
-                eyebrow="Don't See a Match?"
-                title="Send Us Your CV"
-                subtitle="We're always looking for talented individuals. Submit a general application and we'll keep your profile on file."
-              />
-              <Button
-                href="mailto:careers@dailyfoodinternational.com?subject=General Application"
-                size="lg"
-              >
-                General Application
-              </Button>
-            </div>
-          </ScrollReveal>
-        </Container>
-      </section>
+              <div className="mx-auto max-w-4xl space-y-6">
+                {jobListings.map((job, index) => (
+                  <ScrollReveal key={job.id} delay={index * 0.08}>
+                    <JobCard job={job} />
+                  </ScrollReveal>
+                ))}
+              </div>
+            </Container>
+          </section>
+
+          {/* Don't see a match — only shows alongside live listings */}
+          <section className="py-20 md:py-28">
+            <Container>
+              <ScrollReveal>
+                <div className="mx-auto max-w-2xl text-center">
+                  <SectionHeading
+                    eyebrow="Don't See a Match?"
+                    title="Send Us Your CV"
+                    subtitle="We're always looking for talented individuals. Submit a general application and we'll keep your profile on file."
+                  />
+                  <Button
+                    href="mailto:careers@dailyfoodinternational.com?subject=General Application"
+                    size="lg"
+                  >
+                    General Application
+                  </Button>
+                </div>
+              </ScrollReveal>
+            </Container>
+          </section>
+        </>
+      ) : (
+        /* Empty state — no current openings. One unified panel with the
+           General Application CTA so the page never feels half-built. */
+        <section className="bg-surface py-20 md:py-28">
+          <Container>
+            <ScrollReveal>
+              <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-white p-8 text-center md:p-12">
+                <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-primary">
+                  Currently Hiring
+                </span>
+                <h2 className="mt-4 font-heading text-3xl text-foreground md:text-4xl">
+                  No open positions right now
+                </h2>
+                <p className="mt-4 leading-relaxed text-foreground-muted">
+                  We don&apos;t have any active openings at the moment, but
+                  we&apos;re always growing. Send us your CV and we&apos;ll keep
+                  your profile on file for when something matching opens up
+                  at our Accra production site.
+                </p>
+                <div className="mt-8">
+                  <Button
+                    href="mailto:careers@dailyfoodinternational.com?subject=General Application"
+                    size="lg"
+                  >
+                    Submit Your CV
+                  </Button>
+                </div>
+              </div>
+            </ScrollReveal>
+          </Container>
+        </section>
+      )}
     </main>
   );
 }

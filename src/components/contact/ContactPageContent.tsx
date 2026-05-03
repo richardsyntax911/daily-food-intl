@@ -235,39 +235,66 @@ export function ContactPageContent() {
                   alignment="left"
                 />
 
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className="space-y-5">
                   {offices.map((office) => (
                     <div
                       key={office.city}
-                      className="rounded-xl border border-border bg-white p-5 transition-shadow hover:shadow-md"
+                      className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm"
                     >
-                      <div className="mb-3 flex items-center gap-2">
-                        <Building2 className="h-5 w-5 text-primary" />
-                        <h3 className="font-heading text-lg text-foreground">
-                          {office.city}, {office.country}
-                        </h3>
-                      </div>
-                      <span
-                        className={`mb-3 inline-block rounded-full px-3 py-0.5 text-xs font-semibold ${officeBadgeColor(
-                          office.type
-                        )}`}
-                      >
-                        {office.type}
-                      </span>
-                      <div className="space-y-2 text-sm text-foreground-muted">
-                        <p className="flex items-start gap-2">
-                          <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                          {office.address}
-                        </p>
-                        <p className="flex items-center gap-2">
-                          <Phone className="h-4 w-4 shrink-0" />
-                          <a
-                            href={`tel:${office.phone}`}
-                            className="transition-colors hover:text-foreground"
-                          >
-                            {office.phone}
-                          </a>
-                        </p>
+                      {/* Embedded Google Map */}
+                      {office.mapsEmbedUrl && (
+                        <div className="relative aspect-[16/10] w-full bg-surface">
+                          <iframe
+                            src={office.mapsEmbedUrl}
+                            title={`Map showing Daily Food Ltd. in ${office.city}, ${office.country}`}
+                            className="h-full w-full border-0"
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            allowFullScreen
+                          />
+                        </div>
+                      )}
+
+                      {/* Office details */}
+                      <div className="p-5 md:p-6">
+                        <div className="mb-3 flex items-center gap-2">
+                          <Building2 className="h-5 w-5 text-primary" />
+                          <h3 className="font-heading text-lg text-foreground">
+                            {office.city}, {office.country}
+                          </h3>
+                        </div>
+                        <span
+                          className={`mb-4 inline-block rounded-full px-3 py-0.5 text-xs font-semibold ${officeBadgeColor(
+                            office.type
+                          )}`}
+                        >
+                          {office.type}
+                        </span>
+                        <div className="space-y-3 text-sm text-foreground-muted">
+                          <p className="flex items-start gap-2">
+                            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                            {office.address}
+                          </p>
+                          <p className="flex items-center gap-2">
+                            <Phone className="h-4 w-4 shrink-0 text-primary" />
+                            <a
+                              href={`tel:${office.phone.replace(/\s+/g, "")}`}
+                              className="transition-colors hover:text-foreground"
+                            >
+                              {office.phone}
+                            </a>
+                          </p>
+                          {office.mapsLink && (
+                            <a
+                              href={office.mapsLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-dark"
+                            >
+                              Open in Google Maps →
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}

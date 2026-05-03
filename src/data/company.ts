@@ -103,9 +103,15 @@ export const offices = [
     city: "Accra",
     country: "Ghana",
     type: "Headquarters & Production" as const,
-    // TODO: confirm exact address with client.
     address: "Accra, Ghana",
-    phone: "+233 30 222 7890",
+    phone: "+233 55 715 1501",
+    /* Google Maps embed pinned to the Daily Food Ltd. plant in Accra
+       (place ID 0xfdf998ec30307bf:0xeae43136f7d8f351,
+       coordinates 5.589779, -0.232741). */
+    mapsEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.845906299672!2d-0.23274102369504032!3d5.589778694390958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf998ec30307bf%3A0xeae43136f7d8f351!2sDaily%20Food%20Ltd.!5e0!3m2!1sen!2sgh!4v1777814110073!5m2!1sen!2sgh",
+    mapsLink:
+      "https://www.google.com/maps/place/Daily+Food+Ltd./@5.5897787,-0.2327410,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf998ec30307bf:0xeae43136f7d8f351!8m2!3d5.5897787!4d-0.2327410",
   },
 ];
 
